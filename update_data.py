@@ -197,6 +197,17 @@ def main():
     fund_info = {f['code']: f for f in fund_list}
     print(f'基金数量: {len(codes)}')
 
+    # 加载静态数据（晨星评级、赛道、投资风格、优缺点、持仓）
+    def _load_json(filename):
+        path = os.path.join(BASE_DIR, filename)
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return {}
+    extra_data = _load_json('fund_extra_data.json')
+    profiles = _load_json('fund_profiles.json')
+    holdings_data = _load_json('fund_holdings.json')
+
     # 抓取净值数据
     print('抓取净值数据...')
     nav_data = {}
@@ -261,6 +272,9 @@ def main():
 
         info = fund_info.get(code, {})
         pi = period_data.get(code, {})
+        e = extra_data.get(code, {})
+        profile = profiles.get(code, {})
+        h = holdings_data.get(code, {})
 
         # 优先使用 API 阶段涨幅数据
         returns = {
@@ -302,14 +316,14 @@ def main():
             'initial_share': info.get('initial_share', ''),
             'returns': returns,
             'max_drawdown_3y': round(mdd_3y * 100, 2) if mdd_3y is not None else None,
-            'investment_style': '',
-            'pros': [],
-            'cons': [],
-            'sector': '',
-            'morningstar_3y': None,
-            'morningstar_5y': None,
-            'holdings': [],
-            'holding_type': '',
+            'investment_style': profile.get('investment_style', ''),
+            'pros': profile.get('pros', []),
+            'cons': profile.get('cons', []),
+            'sector': h.get('sector', e.get('sector', '')),
+            'morningstar_3y': e.get('morningstar_3y'),
+            'morningstar_5y': e.get('morningstar_5y'),
+            'holdings': h.get('holdings', []),
+            'holding_type': h.get('holding_type', ''),
             'is_september_focus': False,
             'nav_history': [[r['date'], r['nav']] for r in records]
         })
