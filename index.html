@@ -672,32 +672,17 @@
       const rateContainer = document.getElementById('rate-detail-container');
       let rateHtml = '';
 
-      const purTiers = Array.isArray(f.purchase_rate_tiers) ? f.purchase_rate_tiers : [];
       const redTiers = Array.isArray(f.redeem_rate_tiers) ? f.redeem_rate_tiers : [];
 
-      if (purTiers.length || redTiers.length) {
-        rateHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">';
-        if (purTiers.length) {
-          rateHtml += '<div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1f2329;">申购费率</div><table class="holdings-table" style="font-size:12px;">';
-          rateHtml += '<thead><tr><th>金额区间</th><th>费率</th></tr></thead><tbody>';
-          purTiers.forEach(t => {
-            const money = t.money || '--';
-            const rate = t.rate || '--';
-            rateHtml += `<tr><td class="hname">${money}</td><td style="font-weight:700;color:#1677ff;">${rate}</td></tr>`;
-          });
-          rateHtml += '</tbody></table></div>';
-        }
-        if (redTiers.length) {
-          rateHtml += '<div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1f2329;">赎回费率</div><table class="holdings-table" style="font-size:12px;">';
-          rateHtml += '<thead><tr><th>持有时间</th><th>费率</th></tr></thead><tbody>';
-          redTiers.forEach(t => {
-            const time = t.time || (t.money ? t.money : '全部');
-            const rate = t.rate || '--';
-            rateHtml += `<tr><td class="hname">${time}</td><td style="font-weight:700;color:#f53f3f;">${rate}</td></tr>`;
-          });
-          rateHtml += '</tbody></table></div>';
-        }
-        rateHtml += '</div>';
+      if (redTiers.length) {
+        rateHtml += '<div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1f2329;">赎回费率</div><table class="holdings-table" style="font-size:12px;">';
+        rateHtml += '<thead><tr><th>持有时间</th><th>费率</th></tr></thead><tbody>';
+        redTiers.forEach(t => {
+          const time = t.time || (t.money ? t.money : '全部');
+          const rate = t.rate || '--';
+          rateHtml += `<tr><td class="hname">${time}</td><td style="font-weight:700;color:#f53f3f;">${rate}</td></tr>`;
+        });
+        rateHtml += '</tbody></table></div>';
       }
 
       rateContainer.innerHTML = rateHtml;
