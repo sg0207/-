@@ -1520,7 +1520,6 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
             'fund_type': bi.get('fund_type', ''),
             'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,
-            'nav_history': [[r['date'], r['nav']] for r in records],
         })
 
     # 分类列表
@@ -1533,13 +1532,25 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
     sep_names = load_september_focus()
     combined = mark_september_focus(combined, sep_names)
 
-    # 输出
+    # 输出主数据（不含 nav_history，减少文件体积加速加载）
     data = {'funds': combined, 'categories': categories}
     out_path = os.path.join(BASE_DIR, 'web_fund_data.json')
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
 
-    print(f'  已写入 {out_path}')
+    # 输出净值历史独立文件（详情页按需加载）
+    nav_history_map = {}
+    for code in codes:
+        if code in nav_data:
+            records = sorted(nav_data[code]['records'], key=lambda x: x['date'])
+            if records:
+                nav_history_map[code] = [[r['date'], r['nav']] for r in records]
+    nav_path = os.path.join(BASE_DIR, 'fund_nav_history.json')
+    with open(nav_path, 'w', encoding='utf-8') as f:
+        json.dump(nav_history_map, f, ensure_ascii=False)
+
+    print(f'  已写入主数据 {out_path}')
+    print(f'  已写入净值历史 {nav_path}')
     print(f'  共 {len(combined)} 只基金')
     return data
 

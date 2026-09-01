@@ -486,7 +486,6 @@ def main():
             'fund_type': bi.get('fund_type', ''),
             'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,
-            'nav_history': [[r['date'], r['nav']] for r in records]
         })
 
     cat2s = sorted(set(f['category2'] for f in combined if f['category2']))
@@ -498,12 +497,25 @@ def main():
     sep_names = load_september_focus()
     combined = mark_september_focus(combined, sep_names)
 
+    # 写入主数据（不含 nav_history，减少文件体积加速加载）
     data = {'funds': combined, 'categories': categories}
     json_path = os.path.join(BASE_DIR, 'web_fund_data.json')
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
 
-    print(f'生成数据: {json_path}')
+    # 写入净值历史独立文件（详情页按需加载）
+    nav_history_map = {}
+    for code in codes:
+        if code in nav_data:
+            records = sorted(nav_data[code]['records'], key=lambda x: x['date'])
+            if records:
+                nav_history_map[code] = [[r['date'], r['nav']] for r in records]
+    nav_path = os.path.join(BASE_DIR, 'fund_nav_history.json')
+    with open(nav_path, 'w', encoding='utf-8') as f:
+        json.dump(nav_history_map, f, ensure_ascii=False)
+
+    print(f'生成主数据: {json_path}')
+    print(f'生成净值历史: {nav_path}')
     print(f'[{datetime.now()}] 更新完成，共 {len(combined)} 只基金')
 
 

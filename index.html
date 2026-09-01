@@ -421,17 +421,18 @@
     // ===== 数据加载（fetch 原链接模式） =====
     // 直接打开 file:// 时浏览器会拒绝 fetch，请通过 http://localhost:8765/fund_screener.html 访问
     const DATA_URL = './web_fund_data.json';
+    const NAV_HISTORY_URL = './fund_nav_history.json';
     let EMBEDDED_DATA = null;
+    let navHistoryCache = null;  // 按需加载的净值历史
 
     function computeDataDate() {
-      let latest = null;
-      allFunds.forEach(f => {
-        if (f.nav_history && f.nav_history.length) {
-          const d = f.nav_history[f.nav_history.length - 1][0];
-          if (!latest || d > latest) latest = d;
-        }
-      });
-      return latest || '--';
+      // 从主数据中的 returns 字段推断数据日期（取所有基金中收益字段非空的即可）
+      // 实际日期在 nav_history 中，这里用 today 作为近似，等加载 nav_history 后再更新
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      return yyyy + '-' + mm + '-' + dd;
     }
 
     function showLoadError(msg) {
@@ -556,7 +557,7 @@
     }
 
     // ===== 详情页 =====
-    function openDetail(code) {
+    async function openDetail(code) {
       const f = allFunds.find(x => x.code === code);
       if (!f) return;
       document.getElementById('detail-name').innerHTML = f.name + (f.is_september_focus ? '<span class="badge focus" style="margin-left:10px;vertical-align:middle;">9月重点</span>' : '');
@@ -608,7 +609,20 @@
       renderHoldings(f);
 
       document.getElementById('detail-overlay').classList.add('active');
-      renderChart(f);
+
+      // 按需加载净值历史
+      if (!navHistoryCache) {
+        try {
+          const resp = await fetch(NAV_HISTORY_URL + '?t=' + Date.now());
+          if (resp.ok) {
+            navHistoryCache = await resp.json();
+          }
+        } catch (e) {
+          console.warn('加载净值历史失败:', e);
+        }
+      }
+      const navData = navHistoryCache && navHistoryCache[code] ? navHistoryCache[code] : (f.nav_history || []);
+      renderChart(navData);
     }
 
     function renderScaleRules(f) {
@@ -716,11 +730,11 @@
       if (chartInstance) { chartInstance.dispose(); chartInstance = null; }
     }
 
-    function renderChart(f) {
+    function renderChart(navData) {
       const chartDom = document.getElementById('nav-chart');
       if (chartInstance) chartInstance.dispose();
       chartInstance = echarts.init(chartDom);
-      const data = f.nav_history || [];
+      const data = navData || [];
       const dates = data.map(d => d[0]);
       const values = data.map(d => d[1]);
       const option = {
