@@ -389,7 +389,10 @@
         <div class="section-title">主要投资赛道</div>
         <div class="sector-banner" id="detail-sector" style="background:linear-gradient(135deg,#fff7e6 0%,#fff 100%);border:1px solid #ffd591;border-radius:10px;padding:16px 18px;font-size:14px;color:#873800;line-height:1.8;border-left:4px solid var(--orange);">--</div>
 
-        <div class="section-title" id="holdings-title">最新持仓</div>
+        <div class="section-title">基金规模与交易规则</div>
+        <div id="scale-rules-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;margin-bottom:4px;"></div>
+
+        <div class="section-title">最新持仓</div>
         <div id="holdings-container"></div>
 
         <div class="section-title">投资风格</div>
@@ -568,6 +571,7 @@
       const isStock = f.holding_type === 'stock';
       const metrics = [
         { label: '晨星3年评级', value: f.morningstar_3y ? f.morningstar_3y : null, isStar: true },
+        { label: '基金规模', value: f.scale !== null && f.scale !== undefined ? f.scale + '亿' : null, isText: true },
         { label: '今年以来', value: f.returns['ytd'] },
         { label: '近1月', value: f.returns['1m'] },
         { label: '近3月', value: f.returns['3m'] },
@@ -580,6 +584,9 @@
         let display = '--'; let color = '#999';
         if (m.isStar) {
           display = renderStars(parseInt(m.value));
+        } else if (m.isText) {
+          display = m.value;
+          color = '#1f2329';
         } else if (m.value !== null) {
           const v = parseFloat(m.value);
           color = v >= 0 ? 'var(--red)' : 'var(--green)';
@@ -594,30 +601,98 @@
       // 赛道
       document.getElementById('detail-sector').textContent = f.sector || '暂无数据';
 
+      // 规模与交易规则
+      renderScaleRules(f);
+
       // 持仓
-      document.getElementById('holdings-title').textContent = isStock ? '最新持仓 · 前十大重仓股' : '最新持仓 · 前五大重仓债';
       renderHoldings(f);
 
       document.getElementById('detail-overlay').classList.add('active');
       renderChart(f);
     }
 
+    function renderScaleRules(f) {
+      const container = document.getElementById('scale-rules-container');
+      const items = [];
+
+      if (f.scale !== null && f.scale !== undefined) {
+        items.push({ label: '基金规模', value: f.scale + ' 亿元', color: '#1677ff' });
+      }
+      if (f.fund_type) {
+        items.push({ label: '基金类型', value: f.fund_type });
+      }
+      if (f.risk_level) {
+        items.push({ label: '风险等级', value: 'R' + f.risk_level });
+      }
+      if (f.purchase_status) {
+        items.push({ label: '申购状态', value: f.purchase_status, color: f.purchase_status.includes('开放') ? '#00b42a' : '#ff7d00' });
+      }
+      if (f.redeem_status) {
+        items.push({ label: '赎回状态', value: f.redeem_status, color: f.redeem_status.includes('开放') ? '#00b42a' : '#ff7d00' });
+      }
+      if (f.min_purchase !== null && f.min_purchase !== undefined) {
+        const minText = Number(f.min_purchase) >= 100000000 ? (Number(f.min_purchase) / 100000000).toFixed(0) + '亿元' : f.min_purchase + '元';
+        items.push({ label: '最低申购', value: minText });
+      }
+      if (f.max_purchase !== null && f.max_purchase !== undefined && Number(f.max_purchase) < 100000000000) {
+        const maxText = Number(f.max_purchase) >= 100000000 ? (Number(f.max_purchase) / 100000000).toFixed(0) + '亿元' : Number(f.max_purchase).toLocaleString() + '元';
+        items.push({ label: '单日限额', value: maxText, color: '#ff7d00' });
+      } else if (f.max_purchase !== null && f.max_purchase !== undefined) {
+        items.push({ label: '单日限额', value: '无明确上限' });
+      }
+      if (f.actual_rate) {
+        items.push({ label: '申购费率', value: f.actual_rate });
+      }
+
+      if (!items.length) {
+        container.innerHTML = '<div class="holdings-empty">暂无规模与交易规则数据</div>';
+        return;
+      }
+
+      container.innerHTML = items.map(item => `
+        <div class="metric-box" style="text-align:left;padding:12px 14px;min-width:0;overflow:hidden;">
+          <div class="label" style="margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.label}</div>
+          <div class="value" style="font-size:15px;color:${item.color || '#1f2329'};text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.value}</div>
+        </div>
+      `).join('');
+    }
+
     function renderHoldings(f) {
       const container = document.getElementById('holdings-container');
-      const holdings = f.holdings || [];
-      if (!holdings.length) {
+      const stocks = f.stocks || [];
+      const bonds = f.bonds || [];
+      const fofs = f.fofs || [];
+
+      // 兼容旧数据
+      const legacy = f.holdings || [];
+
+      if (!stocks.length && !bonds.length && !fofs.length && !legacy.length) {
         container.innerHTML = '<div class="holdings-empty">暂无持仓数据</div>';
         return;
       }
-      const isStock = f.holding_type === 'stock';
-      const label = isStock ? '股票' : '债券';
+
+      let html = '';
+      if (stocks.length) html += renderSingleHoldingsTable('股票持仓', stocks, 'stock');
+      if (bonds.length) html += renderSingleHoldingsTable('债券持仓', bonds, 'bond');
+      if (fofs.length) html += renderSingleHoldingsTable('基金持仓（FOF）', fofs, 'fof');
+      if (!html && legacy.length) html = renderSingleHoldingsTable('最新持仓', legacy, f.holding_type === 'stock' ? 'stock' : 'bond');
+
+      container.innerHTML = html;
+    }
+
+    function renderSingleHoldingsTable(title, holdings, type) {
       const maxRatio = Math.max(...holdings.map(h => h.ratio));
+      const typeLabel = type === 'stock' ? '股票' : (type === 'bond' ? '债券' : '基金');
+      const typeColor = type === 'stock' ? '#f53f3f' : (type === 'bond' ? '#1677ff' : '#722ed1');
+
       let rows = holdings.map((h, i) => {
-        const pct = (h.ratio / maxRatio * 100).toFixed(0);
+        const pct = maxRatio > 0 ? (h.ratio / maxRatio * 100).toFixed(0) : '0';
+        const sectorText = h.sector ? `<span style="color:#999;font-size:12px;margin-left:4px;">(${h.sector})</span>` : '';
+        const changeText = h.change_type ? `<span style="display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;font-size:11px;background:${h.change_type.includes('新增') ? '#fff1f0' : (h.change_type.includes('增持') ? '#f6ffed' : '#f2f3f5')};color:${h.change_type.includes('新增') ? '#cf1322' : (h.change_type.includes('增持') ? '#389e0d' : '#646a73')};">${h.change_type}</span>` : '';
         return `<tr>
           <td class="rank">${i + 1}</td>
-          <td class="hname">${h.name}</td>
-          <td>${label}</td>
+          <td class="hname" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${h.name}${sectorText}${changeText}</td>
+          <td><span style="color:${typeColor};font-weight:600;">${typeLabel}</span></td>
           <td style="text-align:center;">
             <div style="display:flex;align-items:center;gap:10px;justify-content:flex-end;">
               <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:${pct}%"></div></div>
@@ -626,10 +701,14 @@
           </td>
         </tr>`;
       }).join('');
-      container.innerHTML = `<table class="holdings-table">
-        <thead><tr><th>#</th><th style="text-align:left;">名称</th><th>类型</th><th style="width:200px;">占净值比例</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>`;
+
+      return `<div style="margin-bottom:22px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:10px;color:#1f2329;">${title}</div>
+        <table class="holdings-table">
+          <thead><tr><th>#</th><th style="text-align:left;">名称</th><th>类型</th><th style="width:200px;">占净值比例</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
     }
 
     function closeDetail() {

@@ -98,6 +98,101 @@ def fetch_period_increase(code):
     return result if result else None
 
 
+def fetch_fund_basic_info(code):
+    """拉取基金基础信息：规模、申赎状态、费率、限额等。"""
+    url = (
+        'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNBasicInformation?'
+        f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
+    )
+    try:
+        data = _http_get_json(url)
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    d = data.get('Datas')
+    if not isinstance(d, dict):
+        return None
+    return {
+        'scale': d.get('ENDNAV') or d.get('FEGM') or None,
+        'purchase_status': d.get('SGZT', ''),
+        'redeem_status': d.get('SHZT', ''),
+        'min_purchase': d.get('MINSG'),
+        'max_purchase': d.get('MAXSG'),
+        'source_rate': d.get('SOURCERATE', ''),
+        'actual_rate': d.get('RATE', ''),
+        'fund_type': d.get('FTYPE', ''),
+        'risk_level': d.get('RISKLEVEL', ''),
+    }
+
+
+def fetch_fund_holdings(code):
+    """拉取基金最新持仓，返回 {stocks:[...], bonds:[...], fofs:[...], date: str}。
+    股票字段：GPDM(代码), GPJC(名称), JZBL(占净值比), INDEXNAME(行业)
+    债券字段：ZQDM(代码), ZQMC(名称), ZJZBL(占净值比)
+    """
+    url = (
+        'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNInverstPosition?'
+        f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
+    )
+    try:
+        data = _http_get_json(url)
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    d = data.get('Datas')
+    if not isinstance(d, dict):
+        return None
+
+    def _num(v):
+        try:
+            return float(str(v).replace(',', '')) if v not in (None, '', '--') else None
+        except (ValueError, TypeError):
+            return None
+
+    stocks = []
+    for item in d.get('fundStocks', []) or []:
+        ratio = _num(item.get('JZBL'))
+        if ratio is None:
+            continue
+        stocks.append({
+            'code': item.get('GPDM', ''),
+            'name': item.get('GPJC', ''),
+            'ratio': ratio,
+            'sector': item.get('INDEXNAME', ''),
+            'change_type': item.get('PCTNVCHGTYPE', ''),
+        })
+
+    bonds = []
+    for item in d.get('fundboods', []) or []:
+        ratio = _num(item.get('ZJZBL'))
+        if ratio is None:
+            continue
+        bonds.append({
+            'code': item.get('ZQDM', ''),
+            'name': item.get('ZQMC', ''),
+            'ratio': ratio,
+        })
+
+    fofs = []
+    for item in d.get('fundfofs', []) or []:
+        ratio = _num(item.get('JZBL'))
+        if ratio is None:
+            continue
+        fofs.append({
+            'code': item.get('FCODE', ''),
+            'name': item.get('SHORTNAME', ''),
+            'ratio': ratio,
+        })
+
+    # 按占净值比降序
+    stocks.sort(key=lambda x: x['ratio'], reverse=True)
+    bonds.sort(key=lambda x: x['ratio'], reverse=True)
+    fofs.sort(key=lambda x: x['ratio'], reverse=True)
+    return {'stocks': stocks, 'bonds': bonds, 'fofs': fofs}
+
+
 def get_nav_on_or_before(records, target):
     from datetime import datetime as dt
     target_dt = dt.strptime(target, '%Y-%m-%d') if isinstance(target, str) else target
@@ -139,6 +234,16 @@ def calc_max_drawdown(records, start_date, end_date):
 
 def _pct(cr):
     return round(cr * 100, 2) if cr is not None else None
+
+
+def _fmt_scale(v):
+    """将规模数值格式化为亿元。"""
+    if v is None:
+        return None
+    try:
+        return round(float(v) / 100000000, 2)
+    except (ValueError, TypeError):
+        return None
 
 
 def load_september_focus():
@@ -258,6 +363,48 @@ def main():
 
     print(f'阶段涨幅成功: {len(period_data)}/{len(codes)}, 失败: {len(pi_failed)}')
 
+    # 抓取基金规模与买卖规则
+    print('抓取基金规模与买卖规则...')
+    basic_data = {}
+    basic_failed = []
+    for i, code in enumerate(codes):
+        elapsed = time.time() - last_req[0]
+        if elapsed < MIN_INTERVAL:
+            time.sleep(MIN_INTERVAL - elapsed)
+        last_req[0] = time.time()
+
+        bi = fetch_fund_basic_info(code)
+        if bi is not None:
+            basic_data[code] = bi
+        else:
+            basic_failed.append(code)
+
+        if (i + 1) % 20 == 0 or (i + 1) == len(codes):
+            print(f'  规模规则进度: {i + 1}/{len(codes)}')
+
+    print(f'规模规则成功: {len(basic_data)}/{len(codes)}, 失败: {len(basic_failed)}')
+
+    # 抓取最新持仓（股票+债券）
+    print('抓取最新持仓数据...')
+    holdings_data_live = {}
+    holdings_failed = []
+    for i, code in enumerate(codes):
+        elapsed = time.time() - last_req[0]
+        if elapsed < MIN_INTERVAL:
+            time.sleep(MIN_INTERVAL - elapsed)
+        last_req[0] = time.time()
+
+        hd = fetch_fund_holdings(code)
+        if hd is not None:
+            holdings_data_live[code] = hd
+        else:
+            holdings_failed.append(code)
+
+        if (i + 1) % 20 == 0 or (i + 1) == len(codes):
+            print(f'  持仓进度: {i + 1}/{len(codes)}')
+
+    print(f'持仓成功: {len(holdings_data_live)}/{len(codes)}, 失败: {len(holdings_failed)}')
+
     # 构建网页数据
     print('构建网页数据...')
     combined = []
@@ -274,7 +421,9 @@ def main():
         pi = period_data.get(code, {})
         e = extra_data.get(code, {})
         profile = profiles.get(code, {})
-        h = holdings_data.get(code, {})
+        # 优先使用实时抓取的持仓；失败时回退到静态 fund_holdings.json
+        h = holdings_data_live.get(code, holdings_data.get(code, {}))
+        bi = basic_data.get(code, {})
 
         # 优先使用 API 阶段涨幅数据
         returns = {
@@ -324,6 +473,18 @@ def main():
             'morningstar_5y': e.get('morningstar_5y'),
             'holdings': h.get('holdings', []),
             'holding_type': h.get('holding_type', ''),
+            'stocks': h.get('stocks', []),
+            'bonds': h.get('bonds', []),
+            'fofs': h.get('fofs', []),
+            'scale': _fmt_scale(bi.get('scale')),
+            'purchase_status': bi.get('purchase_status', ''),
+            'redeem_status': bi.get('redeem_status', ''),
+            'min_purchase': bi.get('min_purchase'),
+            'max_purchase': bi.get('max_purchase'),
+            'source_rate': bi.get('source_rate', ''),
+            'actual_rate': bi.get('actual_rate', ''),
+            'fund_type': bi.get('fund_type', ''),
+            'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,
             'nav_history': [[r['date'], r['nav']] for r in records]
         })

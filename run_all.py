@@ -386,6 +386,95 @@ def fetch_extra_data(fund_list):
     return results
 
 
+# ── 基金基础信息与实时持仓（规模、买卖规则、股票+债券） ─────────────
+
+def fetch_fund_basic_info(code):
+    """拉取基金基础信息：规模、申赎状态、费率、限额等。"""
+    url = (
+        'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNBasicInformation?'
+        f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
+    )
+    data = _http_get_json(url)
+    if not isinstance(data, dict):
+        return None
+    d = data.get('Datas')
+    if not isinstance(d, dict):
+        return None
+    return {
+        'scale': d.get('ENDNAV') or d.get('FEGM') or None,
+        'purchase_status': d.get('SGZT', ''),
+        'redeem_status': d.get('SHZT', ''),
+        'min_purchase': d.get('MINSG'),
+        'max_purchase': d.get('MAXSG'),
+        'source_rate': d.get('SOURCERATE', ''),
+        'actual_rate': d.get('RATE', ''),
+        'fund_type': d.get('FTYPE', ''),
+        'risk_level': d.get('RISKLEVEL', ''),
+    }
+
+
+def fetch_fund_holdings_live(code):
+    """拉取基金最新持仓（股票 fundStocks + 债券 fundboods + FOF fundfofs）。
+    返回 {stocks:[...], bonds:[...], fofs:[...]} 或 None。
+    """
+    url = (
+        'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNInverstPosition?'
+        f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
+    )
+    data = _http_get_json(url)
+    if not isinstance(data, dict):
+        return None
+    d = data.get('Datas')
+    if not isinstance(d, dict):
+        return None
+
+    def _num(v):
+        try:
+            return float(str(v).replace(',', '')) if v not in (None, '', '--') else None
+        except (ValueError, TypeError):
+            return None
+
+    stocks = []
+    for item in d.get('fundStocks', []) or []:
+        ratio = _num(item.get('JZBL'))
+        if ratio is None:
+            continue
+        stocks.append({
+            'code': item.get('GPDM', ''),
+            'name': item.get('GPJC', ''),
+            'ratio': ratio,
+            'sector': item.get('INDEXNAME', ''),
+            'change_type': item.get('PCTNVCHGTYPE', ''),
+        })
+
+    bonds = []
+    for item in d.get('fundboods', []) or []:
+        ratio = _num(item.get('ZJZBL'))
+        if ratio is None:
+            continue
+        bonds.append({
+            'code': item.get('ZQDM', ''),
+            'name': item.get('ZQMC', ''),
+            'ratio': ratio,
+        })
+
+    fofs = []
+    for item in d.get('fundfofs', []) or []:
+        ratio = _num(item.get('JZBL'))
+        if ratio is None:
+            continue
+        fofs.append({
+            'code': item.get('FCODE', ''),
+            'name': item.get('SHORTNAME', ''),
+            'ratio': ratio,
+        })
+
+    stocks.sort(key=lambda x: x['ratio'], reverse=True)
+    bonds.sort(key=lambda x: x['ratio'], reverse=True)
+    fofs.sort(key=lambda x: x['ratio'], reverse=True)
+    return {'stocks': stocks, 'bonds': bonds, 'fofs': fofs}
+
+
 # ── Step 2: fetch_holdings ────────────────────────────────────────
 
 def _parse_holdings_from_jsonp(text):
@@ -477,46 +566,56 @@ def _fetch_holding_type(code):
 
 
 def fetch_holdings(fund_list):
-    """Step 2: 顺序抓取所有基金的前十大持仓。返回 {code: holdings_data}。"""
-    print('Step 2: 抓取前十大持仓...')
+    """Step 2: 抓取所有基金的最新持仓（股票+债券+FOF）。返回 {code: holdings_data}。"""
+    print('Step 2: 抓取最新持仓（股票+债券+FOF）...')
     results = {}
     codes = [f['code'] for f in fund_list]
 
     for i, fund in enumerate(fund_list):
         code = fund['code']
 
-        # 拉取 holdings（jjcc = 股票持仓）
-        rt = random.random()
-        url = (
-            f'https://fundf10.eastmoney.com/FundArchivesDatas.aspx?'
-            f'code={code}&type=jjcc&topline=10&year=0&month=0&rt={rt}'
-        )
-        text = _http_get(url, ua=_DESKTOP_UA, referer=f'https://fundf10.eastmoney.com/')
-        holdings, content = [], ''
-        if text:
-            holdings, content = _parse_holdings_from_jsonp(text)
-            if holdings is None:
-                holdings = []
-
-        # 获取持仓类型
-        holding_type = _fetch_holding_type(code)
-
-        # 持仓数>0 但 holding_type 是 bond 时，保留 bond（可能是债基含可转债/国债）
-        # 若 jjcc 内容完全为空，也尝试从 AssetAllocation 判断
-        if not holdings:
-            # 如果 holdings 为空，直接用 AssetAllocation 的结果
-            pass
-
-        # 赛道从已有的额外数据中取（Step 1 已产出）— 此处占位，实际在 Step 4 合并
-        # 这里只返回 holdings + holding_type，sector 留空由 Step 4 补充
-        results[code] = {
-            'holdings': holdings,
-            'holding_type': holding_type,
-            'sector': '',  # placeholder, filled in Step 4
-        }
+        # 优先使用实时持仓接口（股票+债券+FOF）
+        live = fetch_fund_holdings_live(code)
+        if live is not None and (live['stocks'] or live['bonds'] or live['fofs']):
+            holdings = [{'name': s['name'], 'ratio': s['ratio']} for s in live['stocks']]
+            holding_type = 'stock' if live['stocks'] else ('bond' if live['bonds'] else 'fof')
+            results[code] = {
+                'holdings': holdings,
+                'holding_type': holding_type,
+                'sector': '',  # placeholder, filled in Step 4
+                'stocks': live['stocks'],
+                'bonds': live['bonds'],
+                'fofs': live['fofs'],
+            }
+        else:
+            # 回退：旧接口拉股票持仓 + AssetAllocation 判断类型
+            rt = random.random()
+            url = (
+                f'https://fundf10.eastmoney.com/FundArchivesDatas.aspx?'
+                f'code={code}&type=jjcc&topline=10&year=0&month=0&rt={rt}'
+            )
+            text = _http_get(url, ua=_DESKTOP_UA, referer=f'https://fundf10.eastmoney.com/')
+            holdings, content = [], ''
+            if text:
+                holdings, content = _parse_holdings_from_jsonp(text)
+                if holdings is None:
+                    holdings = []
+            holding_type = _fetch_holding_type(code)
+            results[code] = {
+                'holdings': holdings,
+                'holding_type': holding_type,
+                'sector': '',
+                'stocks': holdings,
+                'bonds': [],
+                'fofs': [],
+            }
 
         if (i + 1) % 10 == 0 or (i + 1) == len(codes):
-            print(f'  进度: {i + 1}/{len(codes)}, {code}: {len(holdings)} holdings, type={holding_type}')
+            s = results[code]
+            n_stock = len(s['stocks'])
+            n_bond = len(s['bonds'])
+            n_fof = len(s['fofs'])
+            print(f'  进度: {i + 1}/{len(codes)}, {code}: 股票{n_stock} 债券{n_bond} FOF{n_fof}')
 
     out_path = os.path.join(BASE_DIR, 'fund_holdings.json')
     with open(out_path, 'w', encoding='utf-8') as f:
@@ -1301,6 +1400,34 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
 
     print(f'  阶段涨幅成功: {len(period_data)}/{len(codes)}, 失败: {len(pi_failed)}')
 
+    # ── 抓取基金规模与买卖规则 ──
+    print('  抓取基金规模与买卖规则...')
+    basic_data = {}
+    basic_failed = []
+    for i, code in enumerate(codes):
+        bi = None
+        for attempt in range(RETRY_TIMES):
+            bi = fetch_fund_basic_info(code)
+            if bi is not None:
+                break
+            if attempt < RETRY_TIMES - 1:
+                time.sleep(RETRY_BACKOFF_BASE * (attempt + 1))
+        if bi is not None:
+            basic_data[code] = bi
+        else:
+            basic_failed.append(code)
+        if (i + 1) % 20 == 0 or (i + 1) == len(codes):
+            print(f'    规模规则进度: {i + 1}/{len(codes)}')
+    print(f'  规模规则成功: {len(basic_data)}/{len(codes)}, 失败: {len(basic_failed)}')
+
+    def _fmt_scale(v):
+        if v is None:
+            return None
+        try:
+            return round(float(v) / 100000000, 2)
+        except (ValueError, TypeError):
+            return None
+
     # ── 构建最终数据 ──
     print('  构建最终数据...')
     combined = []
@@ -1321,6 +1448,7 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
         e = extra_data.get(code, {})
         profile = profiles_data.get(code, {})
         h = holdings_data.get(code, {})
+        bi = basic_data.get(code, {})
 
         # 优先级：API 阶段涨幅 > pingzhongdata.js 收益 > NAV 计算
         returns = {
@@ -1379,6 +1507,18 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
             'morningstar_5y': e.get('morningstar_5y'),
             'holdings': h.get('holdings', []),
             'holding_type': h.get('holding_type', ''),
+            'stocks': h.get('stocks', []),
+            'bonds': h.get('bonds', []),
+            'fofs': h.get('fofs', []),
+            'scale': _fmt_scale(bi.get('scale')),
+            'purchase_status': bi.get('purchase_status', ''),
+            'redeem_status': bi.get('redeem_status', ''),
+            'min_purchase': bi.get('min_purchase'),
+            'max_purchase': bi.get('max_purchase'),
+            'source_rate': bi.get('source_rate', ''),
+            'actual_rate': bi.get('actual_rate', ''),
+            'fund_type': bi.get('fund_type', ''),
+            'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,
             'nav_history': [[r['date'], r['nav']] for r in records],
         })
