@@ -100,29 +100,51 @@ def fetch_period_increase(code):
 
 def fetch_fund_basic_info(code):
     """拉取基金基础信息：规模、申赎状态、费率、限额等。"""
-    url = (
+    # 基础信息（规模、原始/实际费率等）
+    url1 = (
         'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNBasicInformation?'
         f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
     )
     try:
-        data = _http_get_json(url)
+        data1 = _http_get_json(url1)
     except Exception:
         return None
-    if not isinstance(data, dict):
+    if not isinstance(data1, dict):
         return None
-    d = data.get('Datas')
-    if not isinstance(d, dict):
+    d1 = data1.get('Datas')
+    if not isinstance(d1, dict):
         return None
+
+    # 完整费率信息（申购分档 + 赎回费率）
+    url2 = (
+        'https://fundmobapi.eastmoney.com/FundMNewApi/FundMNRateInfo?'
+        f'FCODE={code}&deviceid=test&plat=Android&product=EFund&version=4.5'
+    )
+    try:
+        data2 = _http_get_json(url2)
+    except Exception:
+        data2 = None
+    d2 = data2.get('Datas') if isinstance(data2, dict) else None
+
+    # 解析完整申购/赎回费率分档
+    def _parse_rate_list(items):
+        return [{'money': i.get('money', ''), 'time': i.get('time', ''), 'rate': i.get('rate', '')} for i in items if i.get('rate')]
+
+    purchase_rate_tiers = _parse_rate_list(d2.get('rg', [])) if isinstance(d2, dict) else []
+    redeem_rate_tiers = _parse_rate_list(d2.get('sh', [])) if isinstance(d2, dict) else []
+
     return {
-        'scale': d.get('ENDNAV') or d.get('FEGM') or None,
-        'purchase_status': d.get('SGZT', ''),
-        'redeem_status': d.get('SHZT', ''),
-        'min_purchase': d.get('MINSG'),
-        'max_purchase': d.get('MAXSG'),
-        'source_rate': d.get('SOURCERATE', ''),
-        'actual_rate': d.get('RATE', ''),
-        'fund_type': d.get('FTYPE', ''),
-        'risk_level': d.get('RISKLEVEL', ''),
+        'scale': d1.get('ENDNAV') or d1.get('FEGM') or None,
+        'purchase_status': d1.get('SGZT', ''),
+        'redeem_status': d1.get('SHZT', ''),
+        'min_purchase': d1.get('MINSG'),
+        'max_purchase': d1.get('MAXSG'),
+        'source_rate': d1.get('SOURCERATE', ''),
+        'actual_rate': d1.get('RATE', ''),
+        'purchase_rate_tiers': purchase_rate_tiers,
+        'redeem_rate_tiers': redeem_rate_tiers,
+        'fund_type': d1.get('FTYPE', ''),
+        'risk_level': d1.get('RISKLEVEL', ''),
     }
 
 
@@ -483,6 +505,8 @@ def main():
             'max_purchase': bi.get('max_purchase'),
             'source_rate': bi.get('source_rate', ''),
             'actual_rate': bi.get('actual_rate', ''),
+            'purchase_rate_tiers': bi.get('purchase_rate_tiers', []),
+            'redeem_rate_tiers': bi.get('redeem_rate_tiers', []),
             'fund_type': bi.get('fund_type', ''),
             'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,

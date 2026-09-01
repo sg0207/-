@@ -390,7 +390,8 @@
         <div class="sector-banner" id="detail-sector" style="background:linear-gradient(135deg,#fff7e6 0%,#fff 100%);border:1px solid #ffd591;border-radius:10px;padding:16px 18px;font-size:14px;color:#873800;line-height:1.8;border-left:4px solid var(--orange);">--</div>
 
         <div class="section-title">基金规模与交易规则</div>
-        <div id="scale-rules-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:14px;margin-bottom:4px;"></div>
+        <div id="scale-rules-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:14px;margin-bottom:4px;"></div>
+        <div id="rate-detail-container" style="margin-top:12px;"></div>
 
         <div class="section-title">最新持仓</div>
         <div id="holdings-container"></div>
@@ -654,9 +655,6 @@
       } else if (f.max_purchase !== null && f.max_purchase !== undefined) {
         items.push({ label: '单日限额', value: '无明确上限' });
       }
-      if (f.actual_rate) {
-        items.push({ label: '申购费率', value: f.actual_rate });
-      }
 
       if (!items.length) {
         container.innerHTML = '<div class="holdings-empty">暂无规模与交易规则数据</div>';
@@ -669,6 +667,40 @@
           <div class="value" style="font-size:15px;color:${item.color || '#1f2329'};text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.value}</div>
         </div>
       `).join('');
+
+      // 费率明细表格
+      const rateContainer = document.getElementById('rate-detail-container');
+      let rateHtml = '';
+
+      const purTiers = Array.isArray(f.purchase_rate_tiers) ? f.purchase_rate_tiers : [];
+      const redTiers = Array.isArray(f.redeem_rate_tiers) ? f.redeem_rate_tiers : [];
+
+      if (purTiers.length || redTiers.length) {
+        rateHtml += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">';
+        if (purTiers.length) {
+          rateHtml += '<div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1f2329;">申购费率</div><table class="holdings-table" style="font-size:12px;">';
+          rateHtml += '<thead><tr><th>金额区间</th><th>费率</th></tr></thead><tbody>';
+          purTiers.forEach(t => {
+            const money = t.money || '--';
+            const rate = t.rate || '--';
+            rateHtml += `<tr><td class="hname">${money}</td><td style="font-weight:700;color:#1677ff;">${rate}</td></tr>`;
+          });
+          rateHtml += '</tbody></table></div>';
+        }
+        if (redTiers.length) {
+          rateHtml += '<div><div style="font-size:13px;font-weight:700;margin-bottom:8px;color:#1f2329;">赎回费率</div><table class="holdings-table" style="font-size:12px;">';
+          rateHtml += '<thead><tr><th>持有时间</th><th>费率</th></tr></thead><tbody>';
+          redTiers.forEach(t => {
+            const time = t.time || (t.money ? t.money : '全部');
+            const rate = t.rate || '--';
+            rateHtml += `<tr><td class="hname">${time}</td><td style="font-weight:700;color:#f53f3f;">${rate}</td></tr>`;
+          });
+          rateHtml += '</tbody></table></div>';
+        }
+        rateHtml += '</div>';
+      }
+
+      rateContainer.innerHTML = rateHtml;
     }
 
     function renderHoldings(f) {
