@@ -5,7 +5,7 @@ GitHub Actions 专用：每日更新基金数据并生成 web_fund_data.json
 不依赖本地 Excel 文件，从 fund_list.json 读取基金代码和分类。
 不依赖 openpyxl，仅使用标准库。
 """
-import json, os, ssl, urllib.request, time
+import json, os, ssl, urllib.request, time, re
 from datetime import datetime, timedelta
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -141,6 +141,51 @@ def _pct(cr):
     return round(cr * 100, 2) if cr is not None else None
 
 
+def load_september_focus():
+    """从 september_focus.json 读取9月重点资产名单"""
+    path = os.path.join(BASE_DIR, 'september_focus.json')
+    if not os.path.exists(path):
+        print('  september_focus.json 不存在，跳过9月重点标记')
+        return []
+    with open(path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def normalize_base(name):
+    """归一化基金名称用于模糊匹配"""
+    n = name.replace(' ', '').replace('证券投资基金', '').replace('型', '')
+    n = re.sub(r'[A-FC]+(?:类|份额)?$', '', n)
+    return n
+
+
+def get_share_class(name):
+    """提取份额类别（A/B/C/D/E等）"""
+    m = re.search(r'([A-FC]+)(?:类|份额)?$', name.replace(' ', ''))
+    return m.group(1) if m else 'A'
+
+
+def mark_september_focus(combined, sep_names):
+    """标记9月重点资产"""
+    if not sep_names:
+        return combined
+    matched_count = 0
+    for fund in combined:
+        fb = normalize_base(fund['name'])
+        fsc = get_share_class(fund['name'])
+        matched = False
+        for sn in sep_names:
+            sb = normalize_base(sn)
+            ssc = get_share_class(sn)
+            if (fb in sb or sb in fb) and fsc == ssc:
+                matched = True
+                break
+        fund['is_september_focus'] = matched
+        if matched:
+            matched_count += 1
+    print(f'  9月重点资产标记: {matched_count}/{len(combined)}')
+    return combined
+
+
 def main():
     print(f'[{datetime.now()}] 开始更新基金数据...')
 
@@ -272,6 +317,11 @@ def main():
     cat2s = sorted(set(f['category2'] for f in combined if f['category2']))
     cat3s = sorted(set(f['category3'] for f in combined if f['category3']))
     categories = {'level2': cat2s, 'level3': cat3s}
+
+    # 标记9月重点资产
+    print('标记9月重点资产...')
+    sep_names = load_september_focus()
+    combined = mark_september_focus(combined, sep_names)
 
     data = {'funds': combined, 'categories': categories}
     json_path = os.path.join(BASE_DIR, 'web_fund_data.json')
