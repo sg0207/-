@@ -522,7 +522,9 @@ def main():
     combined = mark_september_focus(combined, sep_names)
 
     # 写入主数据（不含 nav_history，减少文件体积加速加载）
-    data = {'funds': combined, 'categories': categories}
+    # updated_at 记录本次数据生成时间（即工作流实际更新时间），供首页展示
+    updated_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    data = {'funds': combined, 'categories': categories, 'updated_at': updated_at}
     json_path = os.path.join(BASE_DIR, 'web_fund_data.json')
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)

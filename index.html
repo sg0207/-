@@ -310,7 +310,7 @@
       <h1><span class="icon">📈</span>重点资产基金筛选器</h1>
       <p>按分类筛选重点特定资产，全面查看基金业绩、回撤、持仓与评级</p>
       <div class="header-date" id="header-date">
-        📅 数据截止日期：<span id="data-date">--</span>
+        📅 数据更新时间：<span id="data-date">--</span>
       </div>
       <div class="header-tags">
         <span>📊 近1月/3月/6月/1年/3年收益</span>
@@ -427,8 +427,11 @@
     let navHistoryCache = null;  // 按需加载的净值历史
 
     function computeDataDate() {
-      // 从主数据中的 returns 字段推断数据日期（取所有基金中收益字段非空的即可）
-      // 实际日期在 nav_history 中，这里用 today 作为近似，等加载 nav_history 后再更新
+      // 优先使用数据中的 updated_at（即工作流实际更新时间），与线上自动更新时间保持一致
+      if (EMBEDDED_DATA && EMBEDDED_DATA.updated_at) {
+        return EMBEDDED_DATA.updated_at;
+      }
+      // 兜底：用当天日期
       const today = new Date();
       const yyyy = today.getFullYear();
       const mm = String(today.getMonth() + 1).padStart(2, '0');
