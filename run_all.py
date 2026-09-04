@@ -1556,8 +1556,8 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
     combined = mark_september_focus(combined, sep_names)
 
     # 输出主数据（不含 nav_history，减少文件体积加速加载）
-    # updated_at 记录本次数据生成时间（即工作流实际更新时间），供首页展示
-    updated_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # updated_at 记录本次数据生成时间（即工作流实际更新时间），转北京时间(UTC+8)，供首页展示
+    updated_at = (datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')
     data = {'funds': combined, 'categories': categories, 'updated_at': updated_at}
     out_path = os.path.join(BASE_DIR, 'web_fund_data.json')
     with open(out_path, 'w', encoding='utf-8') as f:
