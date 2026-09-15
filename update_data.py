@@ -491,7 +491,7 @@ def main():
             'investment_style': profile.get('investment_style', ''),
             'pros': profile.get('pros', []),
             'cons': profile.get('cons', []),
-            'sector': h.get('sector', e.get('sector', '')),
+            'sector': h.get('sector', '') or e.get('sector', ''),
             'morningstar_3y': e.get('morningstar_3y'),
             'morningstar_5y': e.get('morningstar_5y'),
             'holdings': h.get('holdings', []),
