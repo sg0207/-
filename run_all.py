@@ -750,9 +750,9 @@ def passive_sector(name):
 _STYLE_TEMPLATES = {
     # 固收+
     '固收+': [
-        '{company}管理的中波{label}（{kw}），以债券资产为核心，辅以适度股票、可转债等权益敞口，{period}，鼓励长期持有，强调风险调整后收益的稳定性。 本{share}由{company}管理（{kw}），通过债券打底叠加权益增强，希望在稳健基础上争取优于纯债的风险调整后收益。',
-        '{company}管理的低波{label}（{kw}），以高等级信用债和利率债为底仓，严格控制久期和信用风险，{period}，追求本金安全基础上的稳健增值。 本{share}由{company}管理（{kw}），注重安全边际，在利率下行周期中表现出色。',
-        '{company}管理的高波{label}（{kw}），在债券底仓之上积极运用可转债、信用下沉等策略增厚收益，{period}，追求超越基准的绝对收益。 本{share}由{company}管理（{kw}），权益仓位灵活调整，在股债跷跷板中捕捉套利机会。',
+        '{company}管理的{label}，以债券资产为核心，辅以适度股票、可转债等权益敞口，{period}，鼓励长期持有，强调风险调整后收益的稳定性。 本产品通过债券打底叠加权益增强，希望在稳健基础上争取优于纯债的风险调整后收益。',
+        '{company}管理的{label}，以高等级信用债和利率债为底仓，严格控制久期和信用风险，{period}，追求本金安全基础上的稳健增值。 本产品注重安全边际，在利率下行周期中表现出色。',
+        '{company}管理的{label}，在债券底仓之上积极运用可转债、信用下沉等策略增厚收益，{period}，追求超越基准的绝对收益。 本产品权益仓位灵活调整，在股债跷跷板中捕捉套利机会。',
     ],
     # 主动权益 — 均衡
     '均衡': [
@@ -866,16 +866,14 @@ def generate_style(f):
 
     # 固收+
     if cat2 == '固收+':
-        cat3_label = cat3
         if '低波' in cat3:
-            cat3_label = '低波'
+            cat3_label = '低波固收+'
         elif '高波' in cat3:
-            cat3_label = '高波'
+            cat3_label = '高波固收+'
         else:
-            cat3_label = '中波'
+            cat3_label = '中波固收+'
         tpl = _STYLE_TEMPLATES['固收+']
-        kw = _KW_MAP.get(cat3, cat3) if cat3 in _KW_MAP else cat3
-        kw = '固收+' if not kw else kw
+        kw = '固收+'
         opts = [
             tpl[0].format(company=company, label=cat3_label, kw=kw, period=period_desc, share=share),
             tpl[1].format(company=company, label=cat3_label, kw=kw, period=period_desc, share=share)
