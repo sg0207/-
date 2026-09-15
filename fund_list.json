@@ -160,30 +160,6 @@
     "initial_share": "是"
   },
   {
-    "code": "10F115",
-    "name": "富国基金逸享臻选1号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "10F116",
-    "name": "富国基金逸享臻选2号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "10F117",
-    "name": "富国基金逸享臻选3号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
     "code": "009290",
     "name": "富国添享一年持有A",
     "category1": "大稳健",
@@ -373,46 +349,6 @@
     "category1": "大权益",
     "category2": "被动权益",
     "category3": "指数增强",
-    "initial_share": "否"
-  },
-  {
-    "code": "SACA96",
-    "name": "华夏基金-中证500指数增强智胜1号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "SAVD15",
-    "name": "华夏基金-中证500指数增强智胜2号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "SBCG49",
-    "name": "华夏基金-中证500指数增强智远1号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "SBDS39",
-    "name": "华夏基金-中证500指数增强智远2号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
-    "initial_share": "否"
-  },
-  {
-    "code": "SBEN27",
-    "name": "华夏基金-中证500指数增强智远3号集合资产管理计划",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "权益低波",
     "initial_share": "否"
   },
   {
@@ -738,14 +674,6 @@
   {
     "code": "016344",
     "name": "易方达裕惠定开混合C",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "否"
-  },
-  {
-    "code": "119187",
-    "name": "易方达基金多元恒享1号集合资产管理计划",
     "category1": "大稳健",
     "category2": "固收+",
     "category3": "中波固收+",
