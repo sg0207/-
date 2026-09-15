@@ -87,7 +87,8 @@ def fetch_period_increase(code):
     if not isinstance(data, dict):
         return None
     result = {}
-    for item in data.get('Datas', []):
+    datas = data.get('Datas') or []
+    for item in datas:
         title = item.get('title', '')
         syl = item.get('syl', '')
         if syl and str(syl).strip() and str(syl).strip() != '-':

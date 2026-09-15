@@ -36,7 +36,7 @@
     "name": "博时恒益稳健一年持有期A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -44,7 +44,7 @@
     "name": "博时恒益稳健一年持有期C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -80,11 +80,27 @@
     "initial_share": "否"
   },
   {
+    "code": "014846",
+    "name": "博时恒乐债券型证券投资基金A类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "是"
+  },
+  {
+    "code": "014847",
+    "name": "博时恒乐债券型证券投资基金C类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
     "code": "010940",
     "name": "大成安享得利六个月持有A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -92,7 +108,7 @@
     "name": "大成安享得利六个月持有C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -144,11 +160,35 @@
     "initial_share": "是"
   },
   {
+    "code": "10F115",
+    "name": "富国基金逸享臻选1号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "10F116",
+    "name": "富国基金逸享臻选2号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "10F117",
+    "name": "富国基金逸享臻选3号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
     "code": "009290",
     "name": "富国添享一年持有A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -156,7 +196,7 @@
     "name": "富国添享一年持有C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -180,7 +220,7 @@
     "name": "富国悦享回报12个月持有A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -188,7 +228,7 @@
     "name": "富国悦享回报12个月持有C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -224,22 +264,6 @@
     "initial_share": "否"
   },
   {
-    "code": "001048",
-    "name": "富国新兴产业A",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "科技",
-    "initial_share": "是"
-  },
-  {
-    "code": "015686",
-    "name": "富国新兴产业C",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "科技",
-    "initial_share": "否"
-  },
-  {
     "code": "006751",
     "name": "富国互联科技A",
     "category1": "大权益",
@@ -250,6 +274,22 @@
   {
     "code": "011126",
     "name": "富国互联科技C",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "科技",
+    "initial_share": "否"
+  },
+  {
+    "code": "001048",
+    "name": "富国新兴产业A",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "科技",
+    "initial_share": "是"
+  },
+  {
+    "code": "015686",
+    "name": "富国新兴产业C",
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "科技",
@@ -269,6 +309,22 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "价值",
+    "initial_share": "否"
+  },
+  {
+    "code": "018971",
+    "name": "富国致弘量化选股股票A",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
+    "initial_share": "否"
+  },
+  {
+    "code": "018972",
+    "name": "富国致弘量化选股股票C",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -320,28 +376,52 @@
     "initial_share": "否"
   },
   {
+    "code": "SACA96",
+    "name": "华夏基金-中证500指数增强智胜1号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "SAVD15",
+    "name": "华夏基金-中证500指数增强智胜2号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "SBCG49",
+    "name": "华夏基金-中证500指数增强智远1号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "SBDS39",
+    "name": "华夏基金-中证500指数增强智远2号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "SBEN27",
+    "name": "华夏基金-中证500指数增强智远3号集合资产管理计划",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
     "code": "288001",
     "name": "华夏经典配置混合型证券投资基金",
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "权益低波",
     "initial_share": "是"
-  },
-  {
-    "code": "011930",
-    "name": "华夏时代前沿一年持有期混合型证券投资基金A",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "科技",
-    "initial_share": "是"
-  },
-  {
-    "code": "011931",
-    "name": "华夏时代前沿一年持有期混合型证券投资基金C",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "科技",
-    "initial_share": "否"
   },
   {
     "code": "016237",
@@ -380,7 +460,7 @@
     "name": "华夏债券优化一年持有期债券型证券投资基金A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -388,7 +468,7 @@
     "name": "华夏债券优化一年持有期债券型证券投资基金C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -440,6 +520,22 @@
     "initial_share": "否"
   },
   {
+    "code": "025480",
+    "name": "华夏沪深300指数量化增强型证券投资基金A",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "指数增强",
+    "initial_share": "否"
+  },
+  {
+    "code": "025481",
+    "name": "华夏沪深300指数量化增强型证券投资基金C",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "指数增强",
+    "initial_share": "否"
+  },
+  {
     "code": "012993",
     "name": "汇添富品牌力一年持有A",
     "category1": "大权益",
@@ -460,7 +556,7 @@
     "name": "汇添富稳健睿选一年持有A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -468,7 +564,7 @@
     "name": "汇添富稳健睿选一年持有C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -492,7 +588,7 @@
     "name": "汇添富稳健鑫添益六个月持有A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -500,7 +596,7 @@
     "name": "汇添富稳健鑫添益六个月持有C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -508,7 +604,7 @@
     "name": "南方宁悦一年持有期混合A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -516,7 +612,7 @@
     "name": "南方宁悦一年持有期混合C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -548,7 +644,7 @@
     "name": "南方稳鑫6个月持有期债券（FOF）A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -556,7 +652,7 @@
     "name": "南方稳鑫6个月持有期债券（FOF）C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "低波固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -636,7 +732,7 @@
     "name": "易方达裕惠定开混合A",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
     "initial_share": "是"
   },
   {
@@ -644,7 +740,15 @@
     "name": "易方达裕惠定开混合C",
     "category1": "大稳健",
     "category2": "固收+",
-    "category3": "高波固收+",
+    "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "119187",
+    "name": "易方达基金多元恒享1号集合资产管理计划",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -669,6 +773,22 @@
     "category1": "大稳健",
     "category2": "固收+",
     "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "024377",
+    "name": "易方达科智量化选股股票发起式A",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
+    "initial_share": "是"
+  },
+  {
+    "code": "024378",
+    "name": "易方达科智量化选股股票发起式C",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -701,22 +821,6 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "科技",
-    "initial_share": "否"
-  },
-  {
-    "code": "024377",
-    "name": "易方达科智量化选股股票发起式A",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "均衡",
-    "initial_share": "是"
-  },
-  {
-    "code": "024378",
-    "name": "易方达科智量化选股股票发起式C",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -773,6 +877,22 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "权益低波",
+    "initial_share": "否"
+  },
+  {
+    "code": "012077",
+    "name": "易方达悦夏一年持有混合A",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "012078",
+    "name": "易方达悦夏一年持有混合C",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -912,22 +1032,6 @@
     "initial_share": "否"
   },
   {
-    "code": "012145",
-    "name": "中欧稳宁9个月持有期债券A",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "是"
-  },
-  {
-    "code": "012146",
-    "name": "中欧稳宁9个月持有期债券C",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "否"
-  },
-  {
     "code": "001980",
     "name": "中欧量化驱动混合A",
     "category1": "大权益",
@@ -941,22 +1045,6 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "均衡",
-    "initial_share": "否"
-  },
-  {
-    "code": "014846",
-    "name": "博时恒乐债券型证券投资基金A类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "是"
-  },
-  {
-    "code": "014847",
-    "name": "博时恒乐债券型证券投资基金C类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
     "initial_share": "否"
   },
   {
@@ -996,7 +1084,7 @@
     "name": "大成高鑫股票型证券投资基金A类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1004,7 +1092,7 @@
     "name": "大成高鑫股票型证券投资基金C类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -1012,7 +1100,7 @@
     "name": "大成竞争优势混合型证券投资基金A类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1020,7 +1108,7 @@
     "name": "大成竞争优势混合型证券投资基金C类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -1124,7 +1212,7 @@
     "name": "华泰柏瑞多策略灵活配置混合型证券投资基金A类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1132,7 +1220,7 @@
     "name": "华泰柏瑞多策略灵活配置混合型证券投资基金C类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -1140,7 +1228,7 @@
     "name": "华泰柏瑞富利灵活配置混合型证券投资基金A类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1148,7 +1236,7 @@
     "name": "华泰柏瑞富利灵活配置混合型证券投资基金C类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -1308,7 +1396,7 @@
     "name": "南方核心竞争混合型证券投资基金",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1596,7 +1684,7 @@
     "name": "中欧融恒平衡混合型证券投资基金A类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "是"
   },
   {
@@ -1604,7 +1692,7 @@
     "name": "中欧融恒平衡混合型证券投资基金C类",
     "category1": "大权益",
     "category2": "主动权益",
-    "category3": "权益低波",
+    "category3": "均衡",
     "initial_share": "否"
   },
   {
