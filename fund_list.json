@@ -976,22 +976,6 @@
     "initial_share": "否"
   },
   {
-    "code": "011095",
-    "name": "博时恒泽混合型证券投资基金A类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "是"
-  },
-  {
-    "code": "011096",
-    "name": "博时恒泽混合型证券投资基金C类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "中波固收+",
-    "initial_share": "否"
-  },
-  {
     "code": "002610",
     "name": "博时黄金交易型开放式证券投资基金联接基金A类",
     "category1": "大权益",
@@ -1040,22 +1024,6 @@
     "initial_share": "否"
   },
   {
-    "code": "006179",
-    "name": "富国品质生活混合型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "消费",
-    "initial_share": "是"
-  },
-  {
-    "code": "013047",
-    "name": "富国品质生活混合型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "消费",
-    "initial_share": "否"
-  },
-  {
     "code": "009504",
     "name": "富国上海金交易型开放式证券投资基金联接基金A类",
     "category1": "大权益",
@@ -1072,22 +1040,6 @@
     "initial_share": "否"
   },
   {
-    "code": "012746",
-    "name": "富国双利增强债券型证券投资基金A类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "高波固收+",
-    "initial_share": "是"
-  },
-  {
-    "code": "012747",
-    "name": "富国双利增强债券型证券投资基金C类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "高波固收+",
-    "initial_share": "否"
-  },
-  {
     "code": "019583",
     "name": "富国稳健添辰债券型证券投资基金A类",
     "category1": "大稳健",
@@ -1101,54 +1053,6 @@
     "category1": "大稳健",
     "category2": "固收+",
     "category3": "中波固收+",
-    "initial_share": "否"
-  },
-  {
-    "code": "519915",
-    "name": "富国消费主题混合型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "消费",
-    "initial_share": "是"
-  },
-  {
-    "code": "011309",
-    "name": "富国消费主题混合型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "消费",
-    "initial_share": "否"
-  },
-  {
-    "code": "019916",
-    "name": "富国医药创新股票型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "医药",
-    "initial_share": "是"
-  },
-  {
-    "code": "019917",
-    "name": "富国医药创新股票型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "医药",
-    "initial_share": "否"
-  },
-  {
-    "code": "003175",
-    "name": "华泰柏瑞多策略灵活配置混合型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "均衡",
-    "initial_share": "是"
-  },
-  {
-    "code": "015450",
-    "name": "华泰柏瑞多策略灵活配置混合型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "均衡",
     "initial_share": "否"
   },
   {
@@ -1181,110 +1085,6 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "金融",
-    "initial_share": "否"
-  },
-  {
-    "code": "008887",
-    "name": "华夏国证半导体芯片交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "008888",
-    "name": "华夏国证半导体芯片交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "011612",
-    "name": "华夏上证科创板50成份交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "宽基",
-    "initial_share": "是"
-  },
-  {
-    "code": "011613",
-    "name": "华夏上证科创板50成份交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "宽基",
-    "initial_share": "否"
-  },
-  {
-    "code": "024417",
-    "name": "华夏上证科创板半导体材料设备主题交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "024418",
-    "name": "华夏上证科创板半导体材料设备主题交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "008086",
-    "name": "华夏中证5G通信主题交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "008087",
-    "name": "华夏中证5G通信主题交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "023765",
-    "name": "华夏中证5G通信主题交易型开放式指数证券投资基金发起式联接基金D类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "020356",
-    "name": "华夏中证半导体材料设备主题交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "020357",
-    "name": "华夏中证半导体材料设备主题交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "021074",
-    "name": "华夏中证沪深港黄金产业股票交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "021075",
-    "name": "华夏中证沪深港黄金产业股票交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
     "initial_share": "否"
   },
   {
@@ -1328,70 +1128,6 @@
     "initial_share": "是"
   },
   {
-    "code": "005215",
-    "name": "南方全天候策略混合型基金中基金(FOF)A类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "高波固收+",
-    "initial_share": "是"
-  },
-  {
-    "code": "005216",
-    "name": "南方全天候策略混合型基金中基金(FOF)C类",
-    "category1": "大稳健",
-    "category2": "固收+",
-    "category3": "高波固收+",
-    "initial_share": "否"
-  },
-  {
-    "code": "021607",
-    "name": "南方上证科创板芯片交易型开放式指数证券投资基金发起式联接基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "021608",
-    "name": "南方上证科创板芯片交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "021958",
-    "name": "南方中证沪深港黄金产业股票指数发起式证券投资基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "021959",
-    "name": "南方中证沪深港黄金产业股票指数发起式证券投资基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "011822",
-    "name": "易方达产业升级混合型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "成长",
-    "initial_share": "是"
-  },
-  {
-    "code": "011823",
-    "name": "易方达产业升级混合型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "成长",
-    "initial_share": "否"
-  },
-  {
     "code": "009049",
     "name": "易方达高端制造混合型发起式证券投资基金A类",
     "category1": "大权益",
@@ -1408,30 +1144,6 @@
     "initial_share": "否"
   },
   {
-    "code": "010196",
-    "name": "易方达核心优势股票型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "价值",
-    "initial_share": "是"
-  },
-  {
-    "code": "010197",
-    "name": "易方达核心优势股票型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "价值",
-    "initial_share": "否"
-  },
-  {
-    "code": "012301",
-    "name": "易方达核心智造混合型证券投资基金",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "成长",
-    "initial_share": "是"
-  },
-  {
     "code": "001856",
     "name": "易方达环保主题灵活配置混合型证券投资基金A类",
     "category1": "大权益",
@@ -1445,22 +1157,6 @@
     "category1": "大权益",
     "category2": "主动权益",
     "category3": "新能源",
-    "initial_share": "否"
-  },
-  {
-    "code": "110023",
-    "name": "易方达医疗保健行业混合型证券投资基金A类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "医药",
-    "initial_share": "是"
-  },
-  {
-    "code": "019020",
-    "name": "易方达医疗保健行业混合型证券投资基金C类",
-    "category1": "大权益",
-    "category2": "主动权益",
-    "category3": "医药",
     "initial_share": "否"
   },
   {
@@ -1506,22 +1202,6 @@
   {
     "code": "021894",
     "name": "易方达中证半导体材料设备主题交易型开放式指数证券投资基金发起式联接基金C类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "否"
-  },
-  {
-    "code": "021362",
-    "name": "易方达中证沪深港黄金产业股票指数发起式证券投资基金A类",
-    "category1": "大权益",
-    "category2": "被动权益",
-    "category3": "行业",
-    "initial_share": "是"
-  },
-  {
-    "code": "021363",
-    "name": "易方达中证沪深港黄金产业股票指数发起式证券投资基金C类",
     "category1": "大权益",
     "category2": "被动权益",
     "category3": "行业",
@@ -1638,5 +1318,333 @@
     "category2": "被动权益",
     "category3": "行业",
     "initial_share": "否"
+  },
+  {
+    "code": "000032",
+    "name": "易方达信用债债券型证券投资基金A类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "是"
+  },
+  {
+    "code": "000033",
+    "name": "易方达信用债债券型证券投资基金C类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "000925",
+    "name": "汇添富外延增长主题股票型证券投资基金A类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
+    "initial_share": "是"
+  },
+  {
+    "code": "002910",
+    "name": "易方达供给改革灵活配置混合型证券投资基金",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "科技",
+    "initial_share": "是"
+  },
+  {
+    "code": "004432",
+    "name": "南方中证申万有色金属交易型开放式指数证券投资基金发起式联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "004433",
+    "name": "南方中证申万有色金属交易型开放式指数证券投资基金发起式联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "006327",
+    "name": "易方达中证海外中国互联网50交易型开放式指数证券投资基金联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "006328",
+    "name": "易方达中证海外中国互联网50交易型开放式指数证券投资基金联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "007028",
+    "name": "易方达中证500交易型开放式指数证券投资基金发起式联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "是"
+  },
+  {
+    "code": "007029",
+    "name": "易方达中证500交易型开放式指数证券投资基金发起式联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "否"
+  },
+  {
+    "code": "007466",
+    "name": "华泰柏瑞中证红利低波动交易型开放式指数证券投资基金联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "007467",
+    "name": "华泰柏瑞中证红利低波动交易型开放式指数证券投资基金联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "008163",
+    "name": "南方标普中国A股大盘红利低波50交易型开放式指数证券投资基金联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "008164",
+    "name": "南方标普中国A股大盘红利低波50交易型开放式指数证券投资基金联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "008271",
+    "name": "大成优势企业混合型证券投资基金A类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "价值",
+    "initial_share": "是"
+  },
+  {
+    "code": "008272",
+    "name": "大成优势企业混合型证券投资基金C类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "价值",
+    "initial_share": "否"
+  },
+  {
+    "code": "008846",
+    "name": "大成民稳增长混合型证券投资基金A类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "高波固收+",
+    "initial_share": "是"
+  },
+  {
+    "code": "008847",
+    "name": "大成民稳增长混合型证券投资基金C类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "高波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "010990",
+    "name": "南方中证申万有色金属交易型开放式指数证券投资基金发起式联接基金E类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "011424",
+    "name": "汇添富外延增长主题股票型证券投资基金C类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "均衡",
+    "initial_share": "否"
+  },
+  {
+    "code": "013171",
+    "name": "华夏恒生互联网科技业交易型开放式指数证券投资基金发起式联接基金(QDII)A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "013172",
+    "name": "华夏恒生互联网科技业交易型开放式指数证券投资基金发起式联接基金(QDII)C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "013286",
+    "name": "富国上证综指交易型开放式指数证券投资基金联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "否"
+  },
+  {
+    "code": "013304",
+    "name": "易方达中证科创创业50交易型开放式指数证券投资基金联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "是"
+  },
+  {
+    "code": "013305",
+    "name": "易方达中证科创创业50交易型开放式指数证券投资基金联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "否"
+  },
+  {
+    "code": "014673",
+    "name": "富国中证港股通互联网交易型开放式指数证券投资基金发起式联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "014674",
+    "name": "富国中证港股通互联网交易型开放式指数证券投资基金发起式联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "016970",
+    "name": "华夏恒生生物科技交易型开放式指数证券投资基金发起式联接基金(QDII)A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "016971",
+    "name": "华夏恒生生物科技交易型开放式指数证券投资基金发起式联接基金(QDII)C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "017515",
+    "name": "易方达北证50成份指数证券投资基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "是"
+  },
+  {
+    "code": "017516",
+    "name": "易方达北证50成份指数证券投资基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "否"
+  },
+  {
+    "code": "017534",
+    "name": "富国天利增长债券投资基金C类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "低波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "020082",
+    "name": "易方达信用债债券型证券投资基金D类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "否"
+  },
+  {
+    "code": "020972",
+    "name": "易方达国证机器人产业交易型开放式指数证券投资基金发起式联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "是"
+  },
+  {
+    "code": "020973",
+    "name": "易方达国证机器人产业交易型开放式指数证券投资基金发起式联接基金C类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "021179",
+    "name": "易方达产业机遇混合型证券投资基金A类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "科技",
+    "initial_share": "是"
+  },
+  {
+    "code": "021180",
+    "name": "易方达产业机遇混合型证券投资基金C类",
+    "category1": "大权益",
+    "category2": "主动权益",
+    "category3": "科技",
+    "initial_share": "否"
+  },
+  {
+    "code": "022678",
+    "name": "华泰柏瑞中证红利低波动交易型开放式指数证券投资基金联接基金I类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "023764",
+    "name": "华夏恒生互联网科技业交易型开放式指数证券投资基金发起式联接基金(QDII)D类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "行业",
+    "initial_share": "否"
+  },
+  {
+    "code": "100018",
+    "name": "富国天利增长债券投资基金A类",
+    "category1": "大稳健",
+    "category2": "固收+",
+    "category3": "低波固收+",
+    "initial_share": "是"
+  },
+  {
+    "code": "100053",
+    "name": "富国上证综指交易型开放式指数证券投资基金联接基金A类",
+    "category1": "大权益",
+    "category2": "被动权益",
+    "category3": "宽基",
+    "initial_share": "是"
   }
 ]
