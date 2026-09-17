@@ -315,7 +315,7 @@
       <div class="header-tags">
         <span>📊 近1月/3月/6月/1年/3年收益</span>
         <span>📉 近3年最大回撤</span>
-        <span>🏆 晨星评级</span>
+        <span>⭐ 特定资产积分</span>
         <span>💼 持仓明细</span>
       </div>
     </div>
@@ -357,7 +357,7 @@
             <th>基金名称</th>
             <th>分类</th>
             <th>主要赛道</th>
-            <th>晨星评级</th>
+            <th>积分</th>
             <th>今年以来</th>
             <th>近1月</th>
             <th>近3月</th>
@@ -504,6 +504,11 @@
       return '<span class="stars">' + s + '</span>';
     }
 
+    function renderScore(v) {
+      if (v === null || v === undefined) return '<span class="score na">--</span>';
+      return '<span class="score">' + v + '</span>';
+    }
+
     function fmtReturn(v) {
       if (v === null || v === undefined || isNaN(v)) return '<span class="return na">--</span>';
       const cls = v >= 0 ? 'up' : 'down';
@@ -548,7 +553,7 @@
           </td>
           <td>${categoryBadge(f.category2)}<span class="badge">${f.category3}</span></td>
           <td class="sector-cell" title="${f.sector || ''}">${f.sector || '--'}</td>
-          <td>${renderStars(f.morningstar_3y)}</td>
+          <td>${renderScore(f.score)}</td>
           <td>${fmtReturn(f.returns['ytd'])}</td>
           <td>${fmtReturn(f.returns['1m'])}</td>
           <td>${fmtReturn(f.returns['3m'])}</td>
@@ -575,7 +580,7 @@
 
       const isStock = f.holding_type === 'stock';
       const metrics = [
-        { label: '晨星3年评级', value: f.morningstar_3y ? f.morningstar_3y : null, isStar: true },
+        { label: '积分', value: f.score !== null && f.score !== undefined ? f.score : null, isScore: true },
         { label: '基金规模', value: f.scale !== null && f.scale !== undefined ? f.scale + '亿' : null, isText: true },
         { label: '今年以来', value: f.returns['ytd'] },
         { label: '近1月', value: f.returns['1m'] },
@@ -587,9 +592,9 @@
       ];
       document.getElementById('detail-metrics').innerHTML = metrics.map(m => {
         let display = '--'; let color = '#999';
-        if (m.isStar) {
-          display = renderStars(parseInt(m.value));
-        } else if (m.isText) {
+        if (m.isScore) {
+          display = renderScore(parseFloat(m.value));
+        } else if (m.isStar) {
           display = m.value;
           color = '#1f2329';
         } else if (m.value !== null) {
@@ -599,7 +604,7 @@
         }
         return `<div class="metric-box">
           <div class="label">${m.label}</div>
-          <div class="value" style="color:${color};font-size:${m.isStar ? '17px' : '19px'}">${display}</div>
+          <div class="value" style="color:${color};font-size:${(m.isStar || m.isScore) ? '17px' : '19px'}">${display}</div>
         </div>`;
       }).join('');
 
