@@ -595,6 +595,9 @@
         if (m.isScore) {
           display = renderScore(parseFloat(m.value));
           color = '#e63946';
+        } else if (m.isText) {
+          display = m.value;
+          color = '#1f2329';
         } else if (m.isStar) {
           display = m.value;
           color = '#1f2329';
