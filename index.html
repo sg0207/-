@@ -93,7 +93,7 @@
 
     /* ===== Filters ===== */
     .filters {
-      background: rgba(255,255,255,0.97);
+      background: var(--card-bg);
       padding: 22px 26px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -102,11 +102,6 @@
       flex-wrap: wrap;
       gap: 18px;
       align-items: flex-end;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(0,0,0,0.04);
     }
     .filter-group { display: flex; flex-direction: column; gap: 7px; flex: 0 0 auto; }
     .filter-group label {
@@ -158,13 +153,13 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
-    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
     thead th {
       background: linear-gradient(180deg, #fafafa 0%, #f2f3f5 100%);
       font-weight: 700; color: var(--text-secondary);
       padding: 15px 12px; text-align: right;
       border-bottom: 2px solid var(--border);
-      position: sticky; top: 110px; z-index: 6;
+      position: sticky; top: 0; z-index: 6;
       font-size: 12.5px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
@@ -174,6 +169,7 @@
     tbody tr { transition: background 0.15s; cursor: pointer; }
     tbody tr:hover td { background: var(--primary-light); }
     tbody tr:last-child td { border-bottom: none; }
+    thead tr:first-child th:first-child { border-radius: 0; }
     .fund-name { font-weight: 600; }
     .fund-code { font-size: 11px; color: var(--text-secondary); margin-left: 6px; font-weight: 400; }
     .badge {
