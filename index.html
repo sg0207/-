@@ -795,7 +795,7 @@
     window.addEventListener('resize', () => { if (chartInstance) chartInstance.resize(); });
 
     // ===== 表头冻结（JS 实现） =====
-    const tableWrap = document.getElementById('table-wrap');
+    const tableWrap = document.querySelector('.table-wrap');
     const fundTable = document.getElementById('fund-table');
     const theadRow = fundTable ? fundTable.querySelector('thead tr') : null;
     let theadFixed = false;
