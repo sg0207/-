@@ -159,7 +159,6 @@
       font-weight: 700; color: var(--text-secondary);
       padding: 15px 12px; text-align: right;
       border-bottom: 2px solid var(--border);
-      position: sticky; top: 0; z-index: 6;
       font-size: 12.5px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
@@ -169,7 +168,7 @@
     tbody tr { transition: background 0.15s; cursor: pointer; }
     tbody tr:hover td { background: var(--primary-light); }
     tbody tr:last-child td { border-bottom: none; }
-    thead tr:first-child th:first-child { border-radius: 0; }
+    thead tr th:first-child { border-radius: 0; }
     .fund-name { font-weight: 600; }
     .fund-code { font-size: 11px; color: var(--text-secondary); margin-left: 6px; font-weight: 400; }
     .badge {
@@ -460,6 +459,8 @@
         renderTable();
         document.getElementById('table-loading').style.display = 'none';
         document.getElementById('fund-table').style.display = 'table';
+        // 表头冻结初始化：表格可见后再测量 th 宽度
+        requestAnimationFrame(initStickyHeader);
       } catch (e) {
         console.error('load data failed:', e);
         showLoadError('数据加载失败：' + e.message + '<br>请通过本地 HTTP 服务器访问页面');
@@ -792,6 +793,74 @@
     });
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeDetail(); });
     window.addEventListener('resize', () => { if (chartInstance) chartInstance.resize(); });
+
+    // ===== 表头冻结（JS 实现） =====
+    const tableWrap = document.getElementById('table-wrap');
+    const fundTable = document.getElementById('fund-table');
+    const theadRow = fundTable ? fundTable.querySelector('thead tr') : null;
+    let theadFixed = false;
+    let thWidths = [];
+
+    function initStickyHeader() {
+      if (!theadRow || !tableWrap) return;
+      const ths = theadRow.querySelectorAll('th');
+      thWidths = Array.from(ths).map(th => th.offsetWidth);
+    }
+
+    function onScroll() {
+      if (!theadRow || !tableWrap || fundTable.style.display === 'none') return;
+
+      const ths = theadRow.querySelectorAll('th');
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const tableRect = fundTable.getBoundingClientRect();
+      const tableTop = tableRect.top + scrollTop;
+      const headerHeight = theadRow.offsetHeight;
+
+      // 当表头滚动到接近视口顶部时固定
+      if (!theadFixed && scrollTop >= tableTop - headerHeight - 10) {
+        theadFixed = true;
+        // 保存原始样式
+        theadRow.dataset.origStyle = theadRow.getAttribute('style') || '';
+        // 设为 fixed
+        theadRow.style.position = 'fixed';
+        theadRow.style.top = '0';
+        theadRow.style.left = tableRect.left + 'px';
+        theadRow.style.width = tableRect.width + 'px';
+        theadRow.style.zIndex = '100';
+        theadRow.style.background = 'linear-gradient(180deg, #fafafa 0%, #f2f3f5 100%)';
+        // 同步每列宽度
+        ths.forEach((th, i) => {
+          th.style.width = thWidths[i] + 'px';
+        });
+        // 在 tbody 前插入 spacer 行，防止内容上移
+        let spacer = document.getElementById('thead-spacer');
+        if (!spacer) {
+          spacer = document.createElement('tr');
+          spacer.id = 'thead-spacer';
+          spacer.style.height = headerHeight + 'px';
+          spacer.style.visibility = 'hidden';
+          if (fundTable.tBodies.length > 0) {
+            const tbody = fundTable.tBodies[0];
+            if (tbody.parentNode.firstChild === tbody) {
+              tbody.parentNode.insertBefore(spacer, tbody);
+            }
+          }
+        }
+      } else if (theadFixed && scrollTop < tableTop - headerHeight - 10) {
+        // 取消固定
+        theadFixed = false;
+        theadRow.removeAttribute('style');
+        if (theadRow.dataset.origStyle) {
+          theadRow.setAttribute('style', theadRow.dataset.origStyle);
+          delete theadRow.dataset.origStyle;
+        }
+        ths.forEach(th => { th.style.width = ''; });
+        const spacer = document.getElementById('thead-spacer');
+        if (spacer) spacer.remove();
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     loadData();
   </script>
