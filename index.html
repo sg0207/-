@@ -93,7 +93,7 @@
 
     /* ===== Filters ===== */
     .filters {
-      background: var(--card-bg);
+      background: rgba(255,255,255,0.97);
       padding: 22px 26px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -102,6 +102,11 @@
       flex-wrap: wrap;
       gap: 18px;
       align-items: flex-end;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0,0,0,0.04);
     }
     .filter-group { display: flex; flex-direction: column; gap: 7px; flex: 0 0 auto; }
     .filter-group label {
@@ -150,7 +155,8 @@
       background: var(--card-bg);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
     thead th {
@@ -158,8 +164,9 @@
       font-weight: 700; color: var(--text-secondary);
       padding: 15px 12px; text-align: right;
       border-bottom: 2px solid var(--border);
-      position: sticky; top: 0; z-index: 5;
+      position: sticky; top: 110px; z-index: 6;
       font-size: 12.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     thead th:first-child, td:first-child { text-align: left; }
     thead th:nth-child(2), td:nth-child(2) { text-align: left; }
