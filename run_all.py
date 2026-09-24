@@ -1459,6 +1459,19 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
         except (ValueError, TypeError):
             return None
 
+    # ── 读取积分数据（不实时更新，手动维护 fund_scores.json）──
+    score_map = {}
+    scores_path = os.path.join(BASE_DIR, 'fund_scores.json')
+    if os.path.exists(scores_path):
+        try:
+            with open(scores_path, 'r', encoding='utf-8') as f:
+                score_map = json.load(f)
+            print(f'  加载积分数据: {len(score_map)} 只基金')
+        except Exception as e:
+            print(f'  读取 fund_scores.json 失败: {e}')
+    else:
+        print('  fund_scores.json 不存在，积分列将为空')
+
     # ── 构建最终数据 ──
     print('  构建最终数据...')
     combined = []
@@ -1553,6 +1566,7 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
             'fund_type': bi.get('fund_type', ''),
             'risk_level': bi.get('risk_level', ''),
             'is_september_focus': False,
+            'score': score_map.get(code),
         })
 
     # 分类列表
