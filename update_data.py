@@ -386,19 +386,18 @@ def main():
 
     print(f'阶段涨幅成功: {len(period_data)}/{len(codes)}, 失败: {len(pi_failed)}')
 
-    # 读取旧的 web_fund_data.json，保留 score 字段（积分数据不实时更新）
+    # 从独立的 fund_scores.json 读取积分数据（积分不实时更新，手动维护）
     score_map = {}
-    old_web_path = os.path.join(BASE_DIR, 'web_fund_data.json')
-    if os.path.exists(old_web_path):
+    scores_path = os.path.join(BASE_DIR, 'fund_scores.json')
+    if os.path.exists(scores_path):
         try:
-            with open(old_web_path, 'r', encoding='utf-8') as f:
-                old_data = json.load(f)
-            for f in old_data.get('funds', []):
-                if 'score' in f:
-                    score_map[f['code']] = f['score']
-            print(f'保留旧积分数据: {len(score_map)} 只基金')
+            with open(scores_path, 'r', encoding='utf-8') as f:
+                score_map = json.load(f)
+            print(f'加载积分数据: {len(score_map)} 只基金')
         except Exception as e:
-            print(f'读取旧 web_fund_data.json 失败: {e}')
+            print(f'读取 fund_scores.json 失败: {e}')
+    else:
+        print('fund_scores.json 不存在，积分列将为空')
 
     # 抓取基金规模与买卖规则
     print('抓取基金规模与买卖规则...')
