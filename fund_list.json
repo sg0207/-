@@ -1646,5 +1646,85 @@
     "category2": "被动权益",
     "category3": "宽基",
     "initial_share": "是"
+  },
+  {
+    "code": "119187",
+    "name": "易方达基金多元恒享1号集合资产管理计划",
+    "category1": "高端",
+    "category2": "稳健",
+    "category3": "高端稳健",
+    "initial_share": "是"
+  },
+  {
+    "code": "119252",
+    "name": "易方达基金多元恒享2号集合资产管理计划",
+    "category1": "高端",
+    "category2": "稳健",
+    "category3": "高端稳健",
+    "initial_share": "是"
+  },
+  {
+    "code": "119253",
+    "name": "易方达基金多元恒享3号集合资产管理计划",
+    "category1": "高端",
+    "category2": "稳健",
+    "category3": "高端稳健",
+    "initial_share": "是"
+  },
+  {
+    "code": "013808",
+    "name": "易方达稳悦120天滚动短债A",
+    "category1": "公募稳健",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "是"
+  },
+  {
+    "code": "013809",
+    "name": "易方达稳悦120天滚动短债C",
+    "category1": "公募稳健",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "否"
+  },
+  {
+    "code": "019662",
+    "name": "易方达兴利180天持有债券A",
+    "category1": "公募稳健",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "是"
+  },
+  {
+    "code": "019663",
+    "name": "易方达兴利180天持有债券C",
+    "category1": "公募稳健",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "否"
+  },
+  {
+    "code": "002600",
+    "name": "易方达裕景添利6个月定期开放债券",
+    "category1": "公募稳健",
+    "category2": "固收+",
+    "category3": "中波固收+",
+    "initial_share": "是"
+  },
+  {
+    "code": "018880",
+    "name": "中欧稳丰90天持有期债券A",
+    "category1": "公募基金",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "是"
+  },
+  {
+    "code": "018881",
+    "name": "中欧稳丰90天持有期债券C",
+    "category1": "公募基金",
+    "category2": "固收",
+    "category3": "低波固收",
+    "initial_share": "否"
   }
 ]

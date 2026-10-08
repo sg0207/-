@@ -1337,8 +1337,8 @@ def _pct(cr):
     return round(cr * 100, 2) if cr is not None else None
 
 
-def load_september_focus():
-    path = os.path.join(BASE_DIR, 'september_focus.json')
+def load_october_focus():
+    path = os.path.join(BASE_DIR, 'october_focus.json')
     if not os.path.exists(path):
         return []
     with open(path, 'r', encoding='utf-8') as f:
@@ -1356,24 +1356,24 @@ def get_share_class(name):
     return m.group(1) if m else 'A'
 
 
-def mark_september_focus(combined, sep_names):
-    if not sep_names:
+def mark_october_focus(combined, oct_names):
+    if not oct_names:
         return combined
     matched_count = 0
     for fund in combined:
         fb = normalize_base(fund['name'])
         fsc = get_share_class(fund['name'])
         matched = False
-        for sn in sep_names:
+        for sn in oct_names:
             sb = normalize_base(sn)
             ssc = get_share_class(sn)
             if (fb in sb or sb in fb) and fsc == ssc:
                 matched = True
                 break
-        fund['is_september_focus'] = matched
+        fund['is_october_focus'] = matched
         if matched:
             matched_count += 1
-    print(f'  9月重点资产标记: {matched_count}/{len(combined)}')
+    print(f'  10月重点资产标记: {matched_count}/{len(combined)}')
     return combined
 
 
@@ -1565,7 +1565,7 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
             'redeem_rate_tiers': bi.get('redeem_rate_tiers', []),
             'fund_type': bi.get('fund_type', ''),
             'risk_level': bi.get('risk_level', ''),
-            'is_september_focus': False,
+            'is_october_focus': False,
             'score': score_map.get(code),
         })
 
@@ -1574,10 +1574,10 @@ def merge_all_data(fund_list, extra_data, holdings_data, profiles_data):
     cat3s = sorted(set(f['category3'] for f in combined if f['category3']))
     categories = {'level2': cat2s, 'level3': cat3s}
 
-    # 9月重点标记
-    print('  标记9月重点资产...')
-    sep_names = load_september_focus()
-    combined = mark_september_focus(combined, sep_names)
+    # 10月重点标记
+    print('  标记10月重点资产...')
+    oct_names = load_october_focus()
+    combined = mark_october_focus(combined, oct_names)
 
     # 输出主数据（不含 nav_history，减少文件体积加速加载）
     # updated_at 记录本次数据生成时间（即工作流实际更新时间），转北京时间(UTC+8)，供首页展示
