@@ -41068,7 +41068,7 @@
         "ytd": 1.48,
         "since_inception": 14.48
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.18,
       "investment_style": "易方达稳悦120天滚动短债A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41084,11 +41084,52 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 8.45
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 7.12
+        },
+        {
+          "code": "220208",
+          "name": "22国开08",
+          "ratio": 5.83
+        },
+        {
+          "code": "210208",
+          "name": "21国开08",
+          "ratio": 5.24
+        },
+        {
+          "code": "240014",
+          "name": "24附息国债14",
+          "ratio": 4.56
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 3.12
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 2.87
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 2.45
+        }
+      ],
       "fofs": [],
-      "scale": "3394894531.54",
+      "scale": 33.95,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41115,7 +41156,17 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.10%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 30天",
           "rate": "0.00%"
         }
       ],
@@ -41142,7 +41193,7 @@
         "ytd": 1.33,
         "since_inception": 13.37
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.18,
       "investment_style": "易方达稳悦120天滚动短债C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41158,11 +41209,52 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 8.45
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 7.12
+        },
+        {
+          "code": "220208",
+          "name": "22国开08",
+          "ratio": 5.83
+        },
+        {
+          "code": "210208",
+          "name": "21国开08",
+          "ratio": 5.24
+        },
+        {
+          "code": "240014",
+          "name": "24附息国债14",
+          "ratio": 4.56
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 3.12
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 2.87
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 2.45
+        }
+      ],
       "fofs": [],
-      "scale": "14599043344.24",
+      "scale": 14.6,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41179,7 +41271,17 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.00%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 30天",
           "rate": "0.00%"
         }
       ],
@@ -41205,7 +41307,7 @@
         "ytd": 2.69,
         "since_inception": 10.88
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.45,
       "investment_style": "易方达兴利180天持有债券A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41221,11 +41323,62 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 12.35
+        },
+        {
+          "code": "019789",
+          "name": "25特国06",
+          "ratio": 9.82
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 7.45
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 5.21
+        },
+        {
+          "code": "240014",
+          "name": "24附息国债14",
+          "ratio": 4.78
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 3.95
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 3.12
+        },
+        {
+          "code": "232380027",
+          "name": "23建行二级资本债01A",
+          "ratio": 2.85
+        },
+        {
+          "code": "113056",
+          "name": "重银转债",
+          "ratio": 0.45
+        },
+        {
+          "code": "113044",
+          "name": "大秦转债",
+          "ratio": 0.38
+        }
+      ],
       "fofs": [],
-      "scale": "1832649749.29",
+      "scale": 18.33,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41252,7 +41405,22 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.75%"
+        },
+        {
+          "money": "",
+          "time": "30天 ≤ 持有期限 < 180天",
+          "rate": "0.50%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 180天",
           "rate": "0.00%"
         }
       ],
@@ -41278,7 +41446,7 @@
         "ytd": 2.45,
         "since_inception": 10.06
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.45,
       "investment_style": "易方达兴利180天持有债券C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41294,11 +41462,62 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 12.35
+        },
+        {
+          "code": "019789",
+          "name": "25特国06",
+          "ratio": 9.82
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 7.45
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 5.21
+        },
+        {
+          "code": "240014",
+          "name": "24附息国债14",
+          "ratio": 4.78
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 3.95
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 3.12
+        },
+        {
+          "code": "232380027",
+          "name": "23建行二级资本债01A",
+          "ratio": 2.85
+        },
+        {
+          "code": "113056",
+          "name": "重银转债",
+          "ratio": 0.45
+        },
+        {
+          "code": "113044",
+          "name": "大秦转债",
+          "ratio": 0.38
+        }
+      ],
       "fofs": [],
-      "scale": "232400090.9",
+      "scale": 2.32,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41315,7 +41534,22 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.00%"
+        },
+        {
+          "money": "",
+          "time": "30天 ≤ 持有期限 < 180天",
+          "rate": "0.00%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 180天",
           "rate": "0.00%"
         }
       ],
@@ -41343,7 +41577,7 @@
         "ytd": 2.08,
         "since_inception": 58.97
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 1.2,
       "investment_style": "易方达裕景添利6个月定期开放债券由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41359,11 +41593,62 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 10.25
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 8.73
+        },
+        {
+          "code": "019789",
+          "name": "25特国06",
+          "ratio": 7.45
+        },
+        {
+          "code": "220208",
+          "name": "22国开08",
+          "ratio": 5.85
+        },
+        {
+          "code": "210208",
+          "name": "21国开08",
+          "ratio": 4.92
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 3.85
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 3.42
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 2.95
+        },
+        {
+          "code": "127089",
+          "name": "晶澳转债",
+          "ratio": 0.45
+        },
+        {
+          "code": "113044",
+          "name": "大秦转债",
+          "ratio": 0.38
+        }
+      ],
       "fofs": [],
-      "scale": "1305645508.19",
+      "scale": 13.06,
       "purchase_status": "暂停申购",
       "redeem_status": "暂停赎回",
       "min_purchase": "10",
@@ -41395,12 +41680,12 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 ≤ 6天",
+          "time": "持有期限 < 7天",
           "rate": "1.50%"
         },
         {
           "money": "",
-          "time": "7天 ≤ 持有期限 ≤ 29天",
+          "time": "7天 ≤ 持有期限 < 30天",
           "rate": "0.75%"
         },
         {
@@ -41431,7 +41716,7 @@
         "ytd": 1.71,
         "since_inception": 8.88
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.15,
       "investment_style": "中欧稳丰90天持有期债券A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41447,11 +41732,47 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 11.45
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 9.23
+        },
+        {
+          "code": "220208",
+          "name": "22国开08",
+          "ratio": 6.85
+        },
+        {
+          "code": "210208",
+          "name": "21国开08",
+          "ratio": 5.92
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 3.78
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 3.45
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 2.85
+        }
+      ],
       "fofs": [],
-      "scale": "1008177288",
+      "scale": 10.08,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41478,7 +41799,22 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.50%"
+        },
+        {
+          "money": "",
+          "time": "30天 ≤ 持有期限 < 90天",
+          "rate": "0.30%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 90天",
           "rate": "0.00%"
         }
       ],
@@ -41504,7 +41840,7 @@
         "ytd": 1.56,
         "since_inception": 8.24
       },
-      "max_drawdown_3y": null,
+      "max_drawdown_3y": 0.15,
       "investment_style": "中欧稳丰90天持有期债券C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
       "pros": [
         "专业投资团队管理",
@@ -41520,11 +41856,47 @@
       "morningstar_3y": null,
       "morningstar_5y": null,
       "holdings": [],
-      "holding_type": "",
+      "holding_type": "bond",
       "stocks": [],
-      "bonds": [],
+      "bonds": [
+        {
+          "code": "019776",
+          "name": "25国债02",
+          "ratio": 11.45
+        },
+        {
+          "code": "019785",
+          "name": "25国债13",
+          "ratio": 9.23
+        },
+        {
+          "code": "220208",
+          "name": "22国开08",
+          "ratio": 6.85
+        },
+        {
+          "code": "210208",
+          "name": "21国开08",
+          "ratio": 5.92
+        },
+        {
+          "code": "2128042",
+          "name": "21农发22",
+          "ratio": 3.78
+        },
+        {
+          "code": "232480033",
+          "name": "24建行二级资本债02A",
+          "ratio": 3.45
+        },
+        {
+          "code": "232380028",
+          "name": "23农行二级资本债02A",
+          "ratio": 2.85
+        }
+      ],
       "fofs": [],
-      "scale": "50927035.31",
+      "scale": 0.51,
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
@@ -41541,7 +41913,22 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "",
+          "time": "持有期限 < 7天",
+          "rate": "1.50%"
+        },
+        {
+          "money": "",
+          "time": "7天 ≤ 持有期限 < 30天",
+          "rate": "0.00%"
+        },
+        {
+          "money": "",
+          "time": "30天 ≤ 持有期限 < 90天",
+          "rate": "0.00%"
+        },
+        {
+          "money": "",
+          "time": "持有期限 ≥ 90天",
           "rate": "0.00%"
         }
       ],
