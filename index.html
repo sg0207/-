@@ -555,6 +555,8 @@
       const onlyFocus = document.getElementById('filter-oct-focus').checked;
 
       const filtered = allFunds.filter(f => {
+        // 排除3只高端稳健基金（不显示在全部列表中）
+        if (['119187', '119252', '119253'].includes(f.code)) return false;
         if (l2 && f.category2 !== l2) return false;
         if (l3 && f.category3 !== l3) return false;
         if (kw && !f.name.toLowerCase().includes(kw) && !f.code.includes(kw)) return false;
