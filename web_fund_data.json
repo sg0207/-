@@ -41058,12 +41058,15 @@
       "category3": "纯债",
       "initial_share": "是",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": 0.02,
+        "1m": 0.15,
+        "3m": 0.42,
+        "6m": 0.84,
+        "1y": 1.91,
+        "2y": 4.12,
+        "3y": 7.83,
+        "ytd": 1.48,
+        "since_inception": 14.48
       },
       "max_drawdown_3y": null,
       "investment_style": "易方达稳悦120天滚动短债A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41085,28 +41088,23 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "3394894531.54",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.20%",
+      "actual_rate": "0.02%",
       "purchase_rate_tiers": [
         {
           "money": "购买金额 < 100万",
           "time": "",
-          "rate": "0.60%"
-        },
-        {
-          "money": "100万 ≤ 购买金额 < 300万",
-          "time": "",
-          "rate": "0.40%"
-        },
-        {
-          "money": "300万 ≤ 购买金额 < 500万",
-          "time": "",
           "rate": "0.20%"
+        },
+        {
+          "money": "100万 ≤ 购买金额 < 500万",
+          "time": "",
+          "rate": "0.10%"
         },
         {
           "money": "购买金额 ≥ 500万",
@@ -41117,24 +41115,14 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-中短债",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     },
     {
       "code": "013809",
@@ -41144,12 +41132,15 @@
       "category3": "低波",
       "initial_share": "否",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": 0.02,
+        "1m": 0.14,
+        "3m": 0.38,
+        "6m": 0.74,
+        "1y": 1.7,
+        "2y": 3.71,
+        "3y": 7.19,
+        "ytd": 1.33,
+        "since_inception": 13.37
       },
       "max_drawdown_3y": null,
       "investment_style": "易方达稳悦120天滚动短债C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41171,56 +41162,31 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "14599043344.24",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.00%",
+      "actual_rate": "0.00%",
       "purchase_rate_tiers": [
         {
-          "money": "购买金额 < 100万",
+          "money": "",
           "time": "",
-          "rate": "0.60%"
-        },
-        {
-          "money": "100万 ≤ 购买金额 < 300万",
-          "time": "",
-          "rate": "0.40%"
-        },
-        {
-          "money": "300万 ≤ 购买金额 < 500万",
-          "time": "",
-          "rate": "0.20%"
-        },
-        {
-          "money": "购买金额 ≥ 500万",
-          "time": "",
-          "rate": "1000元/笔"
+          "rate": "0.00%"
         }
       ],
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-中短债",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     },
     {
       "code": "019662",
@@ -41230,12 +41196,14 @@
       "category3": "纯债",
       "initial_share": "是",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": -0.01,
+        "1m": 0.1,
+        "3m": 0.82,
+        "6m": 1.53,
+        "1y": 3.36,
+        "2y": 7.74,
+        "ytd": 2.69,
+        "since_inception": 10.88
       },
       "max_drawdown_3y": null,
       "investment_style": "易方达兴利180天持有债券A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41257,26 +41225,21 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "1832649749.29",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.60%",
+      "actual_rate": "0.06%",
       "purchase_rate_tiers": [
         {
           "money": "购买金额 < 100万",
           "time": "",
-          "rate": "0.60%"
-        },
-        {
-          "money": "100万 ≤ 购买金额 < 300万",
-          "time": "",
           "rate": "0.40%"
         },
         {
-          "money": "300万 ≤ 购买金额 < 500万",
+          "money": "100万 ≤ 购买金额 < 500万",
           "time": "",
           "rate": "0.20%"
         },
@@ -41289,24 +41252,14 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-混合一级",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     },
     {
       "code": "019663",
@@ -41316,12 +41269,14 @@
       "category3": "纯债",
       "initial_share": "否",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": -0.02,
+        "1m": 0.07,
+        "3m": 0.74,
+        "6m": 1.37,
+        "1y": 3.03,
+        "2y": 7.11,
+        "ytd": 2.45,
+        "since_inception": 10.06
       },
       "max_drawdown_3y": null,
       "investment_style": "易方达兴利180天持有债券C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41343,56 +41298,31 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "232400090.9",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.00%",
+      "actual_rate": "0.00%",
       "purchase_rate_tiers": [
         {
-          "money": "购买金额 < 100万",
+          "money": "",
           "time": "",
-          "rate": "0.60%"
-        },
-        {
-          "money": "100万 ≤ 购买金额 < 300万",
-          "time": "",
-          "rate": "0.40%"
-        },
-        {
-          "money": "300万 ≤ 购买金额 < 500万",
-          "time": "",
-          "rate": "0.20%"
-        },
-        {
-          "money": "购买金额 ≥ 500万",
-          "time": "",
-          "rate": "1000元/笔"
+          "rate": "0.00%"
         }
       ],
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-混合一级",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     },
     {
       "code": "002600",
@@ -41402,12 +41332,16 @@
       "category3": "低波",
       "initial_share": "否",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": -0.08,
+        "1m": -0.08,
+        "3m": 0.31,
+        "6m": 0.95,
+        "1y": 2.82,
+        "2y": 7.05,
+        "3y": 11.89,
+        "5y": 14.56,
+        "ytd": 2.08,
+        "since_inception": 58.97
       },
       "max_drawdown_3y": null,
       "investment_style": "易方达裕景添利6个月定期开放债券由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41429,28 +41363,28 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
-      "purchase_status": "开放申购",
-      "redeem_status": "开放赎回",
+      "scale": "1305645508.19",
+      "purchase_status": "暂停申购",
+      "redeem_status": "暂停赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.60%",
+      "actual_rate": "0.06%",
       "purchase_rate_tiers": [
         {
           "money": "购买金额 < 100万",
           "time": "",
-          "rate": "0.60%"
+          "rate": "0.06%"
         },
         {
-          "money": "100万 ≤ 购买金额 < 300万",
+          "money": "100万 ≤ 购买金额 < 200万",
           "time": "",
-          "rate": "0.40%"
+          "rate": "0.04%"
         },
         {
-          "money": "300万 ≤ 购买金额 < 500万",
+          "money": "200万 ≤ 购买金额 < 500万",
           "time": "",
-          "rate": "0.20%"
+          "rate": "0.02%"
         },
         {
           "money": "购买金额 ≥ 500万",
@@ -41461,24 +41395,24 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
+          "time": "持有期限 ≤ 6天",
           "rate": "1.50%"
         },
         {
           "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
+          "time": "7天 ≤ 持有期限 ≤ 29天",
+          "rate": "0.75%"
         },
         {
           "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "持有期限 ≥ 30天",
           "rate": "0.00%"
         }
       ],
       "fund_type": "债券型-混合一级",
-      "risk_level": "3",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 40
+      "score": null
     },
     {
       "code": "018880",
@@ -41488,12 +41422,14 @@
       "category3": "纯债",
       "initial_share": "是",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": 0.02,
+        "1m": 0.15,
+        "3m": 0.46,
+        "6m": 1.05,
+        "1y": 2.25,
+        "2y": 5.16,
+        "ytd": 1.71,
+        "since_inception": 8.88
       },
       "max_drawdown_3y": null,
       "investment_style": "中欧稳丰90天持有期债券A由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41515,28 +41451,23 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "1008177288",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.40%",
+      "actual_rate": "0.04%",
       "purchase_rate_tiers": [
         {
           "money": "购买金额 < 100万",
           "time": "",
-          "rate": "0.60%"
+          "rate": "0.03%"
         },
         {
-          "money": "100万 ≤ 购买金额 < 300万",
+          "money": "100万 ≤ 购买金额 < 500万",
           "time": "",
-          "rate": "0.40%"
-        },
-        {
-          "money": "300万 ≤ 购买金额 < 500万",
-          "time": "",
-          "rate": "0.20%"
+          "rate": "0.015%"
         },
         {
           "money": "购买金额 ≥ 500万",
@@ -41547,24 +41478,14 @@
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-长债",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     },
     {
       "code": "018881",
@@ -41574,12 +41495,14 @@
       "category3": "纯债",
       "initial_share": "否",
       "returns": {
-        "ytd": 0,
-        "1m": 0,
-        "3m": 0,
-        "6m": 0,
-        "1y": 0,
-        "3y": null
+        "1w": 0.02,
+        "1m": 0.14,
+        "3m": 0.42,
+        "6m": 0.94,
+        "1y": 2.05,
+        "2y": 4.74,
+        "ytd": 1.56,
+        "since_inception": 8.24
       },
       "max_drawdown_3y": null,
       "investment_style": "中欧稳丰90天持有期债券C由专业投资团队管理，为公募基金产品，目标为投资者提供稳定的投资回报。",
@@ -41601,56 +41524,31 @@
       "stocks": [],
       "bonds": [],
       "fofs": [],
-      "scale": null,
+      "scale": "50927035.31",
       "purchase_status": "开放申购",
       "redeem_status": "开放赎回",
       "min_purchase": "10",
       "max_purchase": "100000000000",
-      "source_rate": "0.80%",
-      "actual_rate": "0.08%",
+      "source_rate": "0.00%",
+      "actual_rate": "0.00%",
       "purchase_rate_tiers": [
         {
-          "money": "购买金额 < 100万",
+          "money": "",
           "time": "",
-          "rate": "0.60%"
-        },
-        {
-          "money": "100万 ≤ 购买金额 < 300万",
-          "time": "",
-          "rate": "0.40%"
-        },
-        {
-          "money": "300万 ≤ 购买金额 < 500万",
-          "time": "",
-          "rate": "0.20%"
-        },
-        {
-          "money": "购买金额 ≥ 500万",
-          "time": "",
-          "rate": "1000元/笔"
+          "rate": "0.00%"
         }
       ],
       "redeem_rate_tiers": [
         {
           "money": "",
-          "time": "持有期限 < 7天",
-          "rate": "1.50%"
-        },
-        {
-          "money": "",
-          "time": "7天 ≤ 持有期限 < 1年",
-          "rate": "0.50%"
-        },
-        {
-          "money": "",
-          "time": "持有期限 ≥ 1年",
+          "time": "",
           "rate": "0.00%"
         }
       ],
-      "fund_type": "债券型",
-      "risk_level": "3",
+      "fund_type": "债券型-长债",
+      "risk_level": "2",
       "is_october_focus": true,
-      "score": 24
+      "score": null
     }
   ],
   "categories": {
