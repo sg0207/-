@@ -1342,7 +1342,17 @@ def load_october_focus():
     if not os.path.exists(path):
         return []
     with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        raw = json.load(f)
+    # 兼容两种格式：字符串列表 或 {"name": ...} 对象列表
+    names = []
+    for item in raw:
+        if isinstance(item, dict):
+            n = item.get('name')
+            if n:
+                names.append(n)
+        elif isinstance(item, str):
+            names.append(item)
+    return names
 
 
 def normalize_base(name):
